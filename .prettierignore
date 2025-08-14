@@ -1,9 +1,22 @@
 # Package Managers
 package-lock.json
 pnpm-lock.yaml
-yarn.lock
 bun.lock
 bun.lockb
 
 # Miscellaneous
-/static/
+.husky
+.idea
+.svelte-kit
+build
+node_modules
+static
+.gitattributes
+.prettierignore
+.ssl
+
+# Project
+src/lib/paraglide
+src/lib/components/ui
+src/lib/hooks/is-mobile.svelte.ts
+src/lib/appwrite/database/types/appwrite.d.ts
