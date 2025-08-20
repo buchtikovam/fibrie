@@ -9,8 +9,6 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	optimizeDeps: {
 		exclude: ['@fontsource-variable/outfit'],
-		include: [
-			// ...Object.keys(pkg.dependencies),
-		],
+		// include: [...Object.keys(pkg.dependencies)],
 	},
 });
