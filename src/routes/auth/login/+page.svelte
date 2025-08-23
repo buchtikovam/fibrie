@@ -49,7 +49,7 @@
 						<div class="grid gap-3">
 							<div class="flex items-center">
 								<Label for="password-{id}">Password</Label>
-								<a href="##" class="ml-auto text-sm underline-offset-4 hover:underline">
+								<a href="/" class="ml-auto text-sm underline-offset-4 hover:underline">
 									Forgot your password?
 								</a>
 							</div>
@@ -59,7 +59,7 @@
 					</div>
 					<div class="text-center text-sm">
 						Dont have an account?
-						<a href="##" class="underline underline-offset-4"> Sign up </a>
+						<a href="/" class="underline underline-offset-4"> Sign up </a>
 					</div>
 				</div>
 			</form>

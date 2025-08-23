@@ -22,7 +22,6 @@
 		"@eslint/js": "^9.18.0",
 		"@internationalized/date": "^3.8.2",
 		"@lucide/svelte": "^0.515.0",
-		"@sveltejs/adapter-auto": "^6.0.0",
 		"@sveltejs/adapter-static": "^3.0.9",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
@@ -62,8 +61,9 @@
 		"@capacitor/android": "^7.4.2",
 		"@capacitor/core": "^7.4.2",
 		"@capacitor/ios": "^7.4.2",
-		"@sveltejs/adapter-node": "^5.2.16",
-		"appwrite": "^18.1.1",
-		"prettier-plugin-multiline-arrays": "^4.0.3"
+		"@sentry/sveltekit": "^10.5.0",
+		"appwrite": "^18.2.0",
+		"prettier-plugin-multiline-arrays": "^4.0.3",
+		"set-interval-async": "^3.0.3"
 	}
 }

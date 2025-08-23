@@ -20,6 +20,7 @@ const config = {
 			$appwrite: './src/lib/appwrite',
 			$cache: './src/lib/cache',
 			$account: './src/lib/appwrite/account',
+			$avatars: './src/lib/appwrite/avatars',
 			$collections: './src/lib/appwrite/database/collections',
 			$buckets: './src/lib/appwrite/storage/buckets',
 			$auth: './src/lib/auth/index.svelte',
