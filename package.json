@@ -14,12 +14,15 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint . && prettier --check .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"machine-translate": "inlang machine translate --project project.inlang"
 	},
 	"devDependencies": {
 		"@capacitor/cli": "^7.4.2",
 		"@eslint/compat": "^1.2.5",
 		"@eslint/js": "^9.18.0",
+		"@inlang/cli": "^3.0.0",
+		"@inlang/paraglide-js": "2.2.0",
 		"@internationalized/date": "^3.8.2",
 		"@lucide/svelte": "^0.515.0",
 		"@sveltejs/adapter-static": "^3.0.9",
@@ -61,6 +64,7 @@
 		"@capacitor/android": "^7.4.2",
 		"@capacitor/core": "^7.4.2",
 		"@capacitor/ios": "^7.4.2",
+		"@fontsource-variable/outfit": "^5.2.6",
 		"@sentry/sveltekit": "^10.5.0",
 		"appwrite": "^18.2.0",
 		"prettier-plugin-multiline-arrays": "^4.0.3",
