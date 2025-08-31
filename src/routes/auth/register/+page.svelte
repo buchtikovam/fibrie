@@ -16,7 +16,7 @@
 		SPA: true,
 		onUpdate: ({ form: f }) => {
 			if (f.valid) {
-				auth.createEmailPasswordSession(f.data.email, f.data.password);
+				auth.create(f.data.email, f.data.password);
 				console.log(`You submitted ${JSON.stringify(f.data, null, 2)}`);
 			} else {
 				console.log('Please fix the errors in the form.');
@@ -30,12 +30,12 @@
 <div class="w-full md:max-w-120">
 	<Card.Root class="shadow-none ">
 		<Card.Header class="text-center">
-			<Card.Title class="text-xl">{m.auth_login_title()} 👋</Card.Title>
-			<Card.Description>{m.auth_login_description()}</Card.Description>
+			<Card.Title class="text-xl">{m.auth_register_title()} 👋</Card.Title>
+			<Card.Description>{m.auth_register_description()}</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<form method="POST" use:enhance>
-				<div class="grid gap-6 overflow-auto">
+				<div class="grid gap-6">
 					<div class="flex flex-col gap-4">
 						<Button variant="outline" class="w-full">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -44,7 +44,7 @@
 									fill="currentColor"
 								/>
 							</svg>
-							{m.auth_login_apple()}
+							{m.auth_register_apple()}
 						</Button>
 						<Button variant="outline" class="w-full">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -53,28 +53,22 @@
 									fill="currentColor"
 								/>
 							</svg>
-							{m.auth_login_google()}
+							{m.auth_register_google()}
 						</Button>
 					</div>
 					<div
 						class="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t"
 					>
-						<span class="bg-card text-muted-foreground relative z-10 px-2">{m.auth_login_separator()}</span>
+						<span class="bg-card text-muted-foreground relative z-10 px-2"
+							>{m.auth_register_separator()}</span
+						>
 					</div>
 					<div class="grid gap-6">
 						<div class="grid gap-3">
 							<Form.Field {form} name="email">
 								<Form.Control>
 									{#snippet children({ props })}
-										<div class="flex items-center">
-											<Form.Label>{m.auth_login_email()}</Form.Label>
-											<a
-												href="/auth/recover"
-												class="ml-auto text-sm underline-offset-4 hover:underline"
-											>
-												{m.auth_login_forgotten_password()}
-											</a>
-										</div>
+										<Form.Label>{m.auth_register_email()}</Form.Label>
 										<Input {...props} bind:value={$formData.email} />
 									{/snippet}
 								</Form.Control>
@@ -84,19 +78,29 @@
 							<Form.Field {form} name="password">
 								<Form.Control>
 									{#snippet children({ props })}
-										<Form.Label>{m.auth_login_password()}</Form.Label>
+										<Form.Label>{m.auth_register_password()}</Form.Label>
 										<Input {...props} bind:value={$formData.password} />
+									{/snippet}
+								</Form.Control>
+								<Form.FieldErrors />
+							</Form.Field>
+
+							<Form.Field {form} name="passwordConfirm">
+								<Form.Control>
+									{#snippet children({ props })}
+										<Form.Label>{m.auth_register_password_confirmation()}</Form.Label>
+										<Input {...props} bind:value={$formData.passwordConfirm} />
 									{/snippet}
 								</Form.Control>
 								<Form.FieldErrors />
 							</Form.Field>
 						</div>
 
-						<Form.Button>{m.auth_login_submit()}</Form.Button>
+						<Form.Button>{m.auth_register_submit()}</Form.Button>
 					</div>
 					<div class="text-center text-sm">
-						{m.auth_login_no_account()}
-						<a href="/auth/register" class="underline underline-offset-4">{m.auth_login_register()}</a>
+						{m.auth_register_has_account()}
+						<a href="/auth/login" class="underline underline-offset-4">{m.auth_register_login()}</a>
 					</div>
 				</div>
 			</form>

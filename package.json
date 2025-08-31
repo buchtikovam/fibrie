@@ -68,6 +68,7 @@
 		"@sentry/sveltekit": "^10.5.0",
 		"appwrite": "^18.2.0",
 		"prettier-plugin-multiline-arrays": "^4.0.3",
-		"set-interval-async": "^3.0.3"
+		"set-interval-async": "^3.0.3",
+		"zod": "^3.25.76"
 	}
 }

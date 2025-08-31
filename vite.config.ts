@@ -23,6 +23,16 @@ export default defineConfig({
 	],
 	optimizeDeps: {
 		exclude: ['@fontsource-variable/outfit'],
-		include: ['appwrite', '@sentry/sveltekit'],
+		include: [
+			'appwrite',
+			'@sentry/sveltekit',
+			'tailwind-variants',
+			'tailwind-merge',
+			'bits-ui',
+			'style-to-object',
+			'@internationalized/date',
+			'tabbable',
+			'@floating-ui/dom',
+		],
 	},
 });

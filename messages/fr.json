@@ -1,0 +1,33 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"auth_login_title": "Bienvenue",
+	"auth_login_description": "Connectez-vous avec votre compte Apple ou Google",
+	"auth_login_apple": "Continuer avec Apple",
+	"auth_login_google": "Continuer avec Google",
+	"auth_login_separator": "Ou",
+	"auth_login_email": "E-mail",
+	"auth_login_password": "Mot de passe",
+	"auth_login_forgotten_password": "Mot de passe oublié ?",
+	"auth_login_submit": "Connexion",
+	"auth_login_no_account": "Vous n'avez pas de compte ?",
+	"auth_login_register": "S'inscrire",
+
+	"auth_register_title": "Bienvenue chez Fibrie",
+	"auth_register_description": "Inscrivez-vous avec votre compte Apple ou Google",
+	"auth_register_apple": "S'inscrire avec Apple",
+	"auth_register_google": "S'inscrire avec Google",
+	"auth_register_separator": "Ou",
+	"auth_register_email": "E-mail",
+	"auth_register_password": "Mot de passe",
+	"auth_register_password_confirmation": "Confirmation du mot de passe",
+	"auth_register_submit": "S'inscrire",
+	"auth_register_has_account": "Vous avez déjà un compte ?",
+	"auth_register_login": "Se connecter",
+
+	"auth_recover_title": "Récupération de mot de passe",
+	"auth_recover_description": "Saisissez votre adresse e-mail et nous vous enverrons un lien de récupération de mot de passe",
+	"auth_recover_submit": "Envoyer l'e-mail",
+	"auth_recover_remember_password": "Vous vous êtes souvenu de votre mot de passe?",
+	"auth_recover_login": "Se connecter"
+}

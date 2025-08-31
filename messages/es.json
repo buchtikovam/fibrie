@@ -1,0 +1,33 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"auth_login_title": "Te damos la bienvenida de nuevo",
+	"auth_login_description": "Inicia sesión con tu cuenta de Apple o Google",
+	"auth_login_apple": "Iniciar sesión con Apple",
+	"auth_login_google": "Iniciar sesión con Google",
+	"auth_login_separator": "O",
+	"auth_login_email": "Correo electrónico",
+	"auth_login_password": "Contraseña",
+	"auth_login_forgotten_password": "¿Olvidaste la contraseña?",
+	"auth_login_submit": "Iniciar sesión",
+	"auth_login_no_account": "¿No tienes cuenta?",
+	"auth_login_register": "Registrarse",
+
+	"auth_register_title": "Bienvenido a Fibrie",
+	"auth_register_description": "Regístrese con su cuenta de Apple o Google",
+	"auth_register_apple": "Registrarse con Apple",
+	"auth_register_google": "Registrarse con Google",
+	"auth_register_separator": "O",
+	"auth_register_email": "Correo electrónico",
+	"auth_register_password": "Contraseña",
+	"auth_register_password_confirmation": "Confirmación de la contraseña",
+	"auth_register_submit": "Registrarse",
+	"auth_register_has_account": "¿Ya tiene una cuenta?",
+	"auth_register_login": "Iniciar sesión",
+
+	"auth_recover_title": "Recuperar contraseña",
+	"auth_recover_description": "Ingrese su dirección de correo electrónico y le enviaremos un enlace para recuperar su contraseña",
+	"auth_recover_submit": "Enviar correo electrónico",
+	"auth_recover_remember_password": "¿Recordó su contraseña?",
+	"auth_recover_login": "Iniciar sesión"
+}

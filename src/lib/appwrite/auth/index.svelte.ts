@@ -1,6 +1,7 @@
 import { PUBLIC_ENDPOINT } from '$env/static/public';
 import { clearIntervalAsync, setIntervalAsync } from 'set-interval-async';
 
+import { browser } from '$app/environment';
 import { goto } from '$app/navigation';
 
 import { account } from '$account';
@@ -15,6 +16,8 @@ const auth = () => {
 		error: <null | Appwrite.AppwriteException>null,
 		oauth: {
 			async create(provider: Appwrite.OAuthProvider, scopes?: string[]) {
+				if (!browser) return;
+
 				try {
 					account.createOAuth2Session(
 						provider,
@@ -27,14 +30,18 @@ const auth = () => {
 				}
 			},
 			async success() {
+				if (!browser) return;
+
 				try {
 					await auth.get();
-					await goto('/account');
+					await goto('/app');
 				} catch (exception: unknown) {
 					await auth.exception(exception);
 				}
 			},
 			async failure() {
+				if (!browser) return;
+
 				try {
 					await auth.logout();
 				} catch (exception: unknown) {
@@ -43,6 +50,8 @@ const auth = () => {
 			},
 		},
 		async get() {
+			if (!browser) return;
+
 			try {
 				auth.session = auth.session ?? (await account.getSession('current'));
 				auth.user = auth.user ?? (await account.get());
@@ -51,40 +60,53 @@ const auth = () => {
 			}
 		},
 		authenticated() {
+			if (!browser) return;
+
 			return auth.session !== null && auth.user !== null;
 		},
 		async guard(pathname: string | undefined, cancel: undefined | (() => void)) {
+			if (!browser) return;
+
 			let url = null;
-			if (pathname?.startsWith('/account')) {
-				if (!auth.authenticated()) url = '/auth';
-			} else if (pathname?.startsWith('/auth/finish')) {
-				if (!auth.authenticated()) url = '/auth';
+
+			console.log(pathname);
+			if (pathname?.startsWith('/app')) {
+				if (!auth.authenticated()) url = '/auth/login';
 			} else if (pathname?.startsWith('/auth')) {
-				if (auth.authenticated()) url = '/account';
+				console.log('case2');
+				console.log(auth.authenticated());
+				if (auth.authenticated()) url = '/app';
 			}
 
 			if (url && pathname !== url) {
+				console.log('if');
 				if (cancel) cancel();
 				await goto(url);
 			}
 		},
 		async update() {
+			if (!browser) return;
+
 			try {
 				if (auth.session) auth.session = await account.updateSession(auth.session.$id);
 			} catch (exception: unknown) {
 				await auth.exception(exception);
 			}
 		},
-		async create(email: string, password: string, url: null | string = '/account') {
+		async create(email: string, password: string, url: null | string = '/app') {
+			if (!browser) return;
+
 			try {
 				auth.user = await account.create(Appwrite.ID.unique(), email, password);
 				await auth.createEmailPasswordSession(email, password, url);
-				await goto('/auth/finish');
+				await goto('/app');
 			} catch (exception: unknown) {
 				await auth.exception(exception);
 			}
 		},
-		async createEmailPasswordSession(email: string, password: string, url: null | string = '/account') {
+		async createEmailPasswordSession(email: string, password: string, url: null | string = '/app') {
+			if (!browser) return;
+
 			try {
 				await auth.logout(null);
 			} catch (exception: unknown) {
@@ -99,7 +121,9 @@ const auth = () => {
 				await auth.exception(exception);
 			}
 		},
-		async logout(url: null | string = '/auth') {
+		async logout(url: null | string = '/auth/login') {
+			if (!browser) return;
+
 			try {
 				if (auth.error?.type !== 'general_rate_limit_exceeded') {
 					if (auth.session) await account.deleteSession(auth.session.$id);
@@ -113,6 +137,8 @@ const auth = () => {
 			}
 		},
 		expiring(): boolean | undefined {
+			if (!browser) return;
+
 			if (auth.session) {
 				return auth.session.providerAccessTokenExpiry !== ''
 					? Date.now() > new Date(auth.session.providerAccessTokenExpiry).getTime() - 1000 * 10
@@ -122,6 +148,8 @@ const auth = () => {
 			return undefined;
 		},
 		expired(): boolean | undefined {
+			if (!browser) return;
+
 			if (auth.session) {
 				return auth.session.providerAccessTokenExpiry !== ''
 					? Date.now() > new Date(auth.session.providerAccessTokenExpiry).getTime()
@@ -131,6 +159,8 @@ const auth = () => {
 			return undefined;
 		},
 		async exception(exception: unknown) {
+			if (!browser) return;
+
 			if (exception instanceof Appwrite.AppwriteException) {
 				auth.error = exception;
 				if (exception.type === 'general_rate_limit_exceeded') {
@@ -142,6 +172,8 @@ const auth = () => {
 			}
 		},
 		async initialize() {
+			if (!browser) return;
+
 			await auth.get();
 			await auth.guard(window.location.pathname, undefined);
 
