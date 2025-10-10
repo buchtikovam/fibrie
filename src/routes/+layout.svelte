@@ -33,6 +33,6 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="h-screen w-screen bg-gradient-to-br from-primary/25 via-slate-100 to-cyan-50 font-sans p-4">
+<div class="h-screen w-screen bg-linear-to-br from-primary/25 via-slate-100 to-cyan-50 font-sans p-4">
 	{@render children?.()}
 </div>
