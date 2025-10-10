@@ -33,6 +33,8 @@ export default defineConfig({
 			'@internationalized/date',
 			'tabbable',
 			'@floating-ui/dom',
+			'set-interval-async',
+			'devalue',
 		],
 	},
 });
