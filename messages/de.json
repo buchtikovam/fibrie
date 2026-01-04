@@ -1,6 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
+	"root_error_description_unexpected": "Etwas Unerwartetes ist passiert!",
+	"root_error_description_apology": "Das tut uns leid.",
+	"root_error_navigate_button_label": "Zurück navigieren",
+	"root_error_help": "Brauchen Sie Hilfe?",
+	"root_error_contact_support": "Support kontaktieren",
+
 	"auth_login_title": "Willkommen zurück",
 	"auth_login_description": "Melden Sie sich mit Ihrem Apple- oder Google-Konto an",
 	"auth_login_apple": "Mit Apple anmelden",

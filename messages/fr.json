@@ -1,6 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
+	"root_error_description_unexpected": "Un problème inattendu est survenu !",
+	"root_error_description_apology": "Nous en sommes désolés.",
+	"root_error_navigate_button_label": "Retourner",
+	"root_error_help": "Besoin d'aide ?",
+	"root_error_contact_support": "Contacter le support",
+
 	"auth_login_title": "Bienvenue",
 	"auth_login_description": "Connectez-vous avec votre compte Apple ou Google",
 	"auth_login_apple": "Continuer avec Apple",

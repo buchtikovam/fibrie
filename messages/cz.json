@@ -1,6 +1,12 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
+	"root_error_description_unexpected": "Stalo se něco velmi neočekávaného!",
+	"root_error_description_apology": "Omlouváme se za to.",
+	"root_error_navigate_button_label": "Zpět",
+	"root_error_help": "Potřebujete pomoct?",
+	"root_error_contact_support": "Kontaktovat podporu",
+
 	"auth_login_title": "Vítejte zpět",
 	"auth_login_description": "Přihlaste se pomocí účtu Apple nebo Google",
 	"auth_login_apple": "Přihlásit se přes Apple",
