@@ -8,6 +8,7 @@
 		"build": "vite build",
 		"cap:sync": "npx cap sync",
 		"android:open": "npx cap open android",
+		"android:run": "npx cap run android --live-reload --port=5173",
 		"ios:open": "npx cap open ios",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -61,7 +62,7 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
-		"@capacitor/android": "^8.0.0",
+		"@capacitor/android": "^8.0.1",
 		"@capacitor/core": "^8.0.0",
 		"@capacitor/ios": "^8.0.0",
 		"@fontsource-variable/outfit": "^5.2.6",

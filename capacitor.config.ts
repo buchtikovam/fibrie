@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
 	appName: 'fibrie',
 	webDir: 'build',
 	server: {
-		url: 'http://172.16.2.146:5173',
+		url: 'http://172.16.2.160:5173',
 		cleartext: true,
 	},
 };

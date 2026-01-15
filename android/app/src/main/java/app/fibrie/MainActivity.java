@@ -1,4 +1,4 @@
-package com.example.app;
+package app.fibrie;
 
 import com.getcapacitor.BridgeActivity;
 
