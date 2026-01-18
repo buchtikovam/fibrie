@@ -5,16 +5,12 @@ const config: CapacitorConfig = {
 	appName: 'fibrie',
 	webDir: 'build',
 	server: {
-		url: 'http://172.16.2.160:5173',
-		cleartext: true,
+		// url: 'http://172.16.2.160:5173', // pouze pro live-preview
+		// cleartext: true, // pouze pro live-preview
+		errorPath: 'error.html',
 	},
-	plugins: {
-		SystemBars: {
-			insetsHandling: 'css',
-			style: 'DARK',
-			hidden: false,
-			animation: 'NONE',
-		},
+	android: {
+		minWebViewVersion: 113,
 	},
 };
 
