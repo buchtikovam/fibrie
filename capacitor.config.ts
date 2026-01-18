@@ -5,8 +5,8 @@ const config: CapacitorConfig = {
 	appName: 'fibrie',
 	webDir: 'build',
 	server: {
-		// url: 'http://172.16.2.160:5173', // pouze pro live-preview
-		// cleartext: true, // pouze pro live-preview
+		url: 'http://172.16.2.160:5173', // pouze pro live-preview, zakomentovat pro live
+		cleartext: true, // pouze pro live-preview, zakomentovat pro live
 		errorPath: 'error.html',
 	},
 	android: {

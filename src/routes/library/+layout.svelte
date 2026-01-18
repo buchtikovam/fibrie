@@ -10,6 +10,10 @@
 	import Tabs from '$ui/tabs/Tabs.svelte';
 	import Heading from '$ui/typography/Heading.svelte';
 
+	import type { LayoutProps } from './$types';
+
+	let { children }: LayoutProps = $props();
+
 	function getNavTabs(): TabItem[] {
 		return [
 			{
@@ -40,3 +44,5 @@
 
 	<Tabs tabs={getNavTabs()} />
 </PageContainer>
+
+{@render children?.()}

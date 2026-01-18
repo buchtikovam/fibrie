@@ -1,15 +1,12 @@
 <script lang="ts">
 	import Dock from '$lib/features/navigation/components/Dock.svelte';
+
 	// import { SystemBarType, SystemBars } from '@capacitor/core';
-	import { type Snippet } from 'svelte';
 
 	import '../app.css';
+	import type { LayoutProps } from './$types';
 
-	interface Props {
-		children?: Snippet;
-	}
-
-	let { children }: Props = $props();
+	let { children }: LayoutProps = $props();
 
 	// $effect(() => {
 	// 	(async () => {
