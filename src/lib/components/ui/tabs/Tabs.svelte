@@ -10,10 +10,12 @@
 	let { tabs }: Props = $props();
 </script>
 
-<div role="tablist" class="tabs-sm tabs-box w-fit">
+<div role="tablist" class="tabs-sm tabs-box flex">
 	{#each tabs as tab (tab.id)}
 		{@const active = page.url.pathname === tab.href}
 
-		<a role="tab" href={tab.href} aria-label={tab.label} class:tab-active={active} class="tab">{tab.label}</a>
+		<a role="tab" href={tab.href} aria-label={tab.label} class:tab-active={active} class="tab flex-1">
+			{tab.label}
+		</a>
 	{/each}
 </div>

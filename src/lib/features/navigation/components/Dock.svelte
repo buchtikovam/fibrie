@@ -16,7 +16,7 @@
 	<Icon class="size-[1.2em]" viewBox="0 0 24 24" stroke-linejoin="miter" stroke-linecap="butt" />
 {/snippet}
 
-<div class="dock dock-sm pb-safe">
+<div class="dock dock-md relative border-t-0 rounded-t-3xl">
 	{#each dockItems as item (item.id)}
 		{@const active = isActive(page.url.pathname, item.href)}
 

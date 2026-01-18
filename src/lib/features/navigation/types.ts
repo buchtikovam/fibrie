@@ -12,3 +12,10 @@ export interface TabItem {
 	readonly label: string;
 	readonly href: string;
 }
+
+export interface ButtonNavItem {
+	readonly id: string;
+	readonly label: string;
+	readonly href: string;
+	readonly icon: Component;
+}

@@ -8,6 +8,14 @@ const config: CapacitorConfig = {
 		url: 'http://172.16.2.160:5173',
 		cleartext: true,
 	},
+	plugins: {
+		SystemBars: {
+			insetsHandling: 'css',
+			style: 'DARK',
+			hidden: false,
+			animation: 'NONE',
+		},
+	},
 };
 
 export default config;

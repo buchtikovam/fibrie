@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-
 	import Dock from '$lib/features/navigation/components/Dock.svelte';
+	// import { SystemBarType, SystemBars } from '@capacitor/core';
+	import { type Snippet } from 'svelte';
 
 	import '../app.css';
 
@@ -10,10 +10,18 @@
 	}
 
 	let { children }: Props = $props();
+
+	// $effect(() => {
+	// 	(async () => {
+	// 		await SystemBars.hide({
+	// 			bar: SystemBarType.NavigationBar,
+	// 		});
+	// 	})();
+	// });
 </script>
 
-<div class="bg-base-100 flex justify-center rounded-sm">
-	<main class="flex-1">
+<div class="bg-base-100 flex h-dvh w-full flex-col overflow-hidden pt-[env(safe-area-inset-top)]">
+	<main class="relative flex flex-1 flex-col min-h-0">
 		{@render children?.()}
 	</main>
 

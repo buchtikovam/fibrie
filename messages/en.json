@@ -4,5 +4,17 @@
 	"components_dock_library": "Your library",
 	"components_dock_tools": "Tools",
 	"components_dock_assistant": "Assistant",
-	"components_dock_connect": "Connect"
+	"components_dock_profile": "Profile",
+
+	"routes_explore_heading": "What do you want to make today?",
+
+	"routes_library_heading": "Your library",
+	"routes_library_nav_tab_saved": "Saved",
+	"routes_library_nav_tab_created": "Created",
+	"routes_library_nav_tab_collections": "Collections",
+
+	"routes_profile_heading": "Profile",
+	"routes_profile_nav_button_my_profile": "My profile",
+
+	"routes_profile_preferences_heading": "Preferences"
 }

@@ -1,15 +1,42 @@
 <script lang="ts">
 	import type { TabItem } from '$lib/features/navigation/types';
 
-	import Tabs from '$lib/components/tabs/Tabs.svelte';
+	import * as m from '$lib/paraglide/messages';
+	import PageContainer from '$lib/components/layout/containers/PageContainer.svelte';
+	import { onMount } from 'svelte';
+
+	import { goto } from '$app/navigation';
+
+	import Tabs from '$ui/tabs/Tabs.svelte';
+	import Heading from '$ui/typography/Heading.svelte';
 
 	function getNavTabs(): TabItem[] {
-		return [];
+		return [
+			{
+				id: 'saved',
+				label: m.routes_library_nav_tab_saved(),
+				href: '/library/saved',
+			},
+			{
+				id: 'created',
+				label: m.routes_library_nav_tab_created(),
+				href: '/library/created',
+			},
+			{
+				id: 'collections',
+				label: m.routes_library_nav_tab_collections(),
+				href: '/library/collections',
+			},
+		];
 	}
+
+	onMount(() => {
+		goto('/library/saved');
+	});
 </script>
 
-<div class="p-6">
-	<h1 class="text-2xl font-bold">Main Heading</h1>
+<PageContainer>
+	<Heading>{m.routes_library_heading()}</Heading>
 
 	<Tabs tabs={getNavTabs()} />
-</div>
+</PageContainer>
