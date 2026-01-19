@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { Component } from 'svelte';
-
-	import { getDockItems } from '$lib/features/navigation/data';
+	import { getDockItems } from '$lib/features/navigation/config';
 
 	import { page } from '$app/state';
 
@@ -12,21 +10,19 @@
 	}
 </script>
 
-{#snippet dockIcon(Icon: Component)}
-	<Icon class="size-[1.2em]" viewBox="0 0 24 24" stroke-linejoin="miter" stroke-linecap="butt" />
-{/snippet}
-
-<div class="dock dock-md relative border-t-0 rounded-t-3xl">
+<div class="dock dock-md relative border-t-0 rounded-t-3xl pb-1">
 	{#each dockItems as item (item.id)}
 		{@const active = isActive(page.url.pathname, item.href)}
+		{@const Icon = item.icon}
 
 		<a
 			href={item.href}
 			class:dock-active={active}
 			aria-label={item.label}
 			aria-current={active ? 'page' : undefined}
+			class={`${active ? 'text-primary ' : ''} `}
 		>
-			{@render dockIcon(item.icon)}
+			<Icon class="size-[1.2em]" stroke-linejoin="miter" stroke-linecap="butt" />
 			<span class="dock-label">{item.label}</span>
 		</a>
 	{/each}

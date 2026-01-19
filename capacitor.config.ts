@@ -10,7 +10,7 @@ const config: CapacitorConfig = {
 		errorPath: 'error.html',
 	},
 	android: {
-		minWebViewVersion: 113,
+		minWebViewVersion: 124,
 	},
 };
 

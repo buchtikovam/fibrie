@@ -14,7 +14,17 @@
 	"routes_library_nav_tab_collections": "Collections",
 
 	"routes_profile_heading": "Profile",
-	"routes_profile_nav_button_my_profile": "My profile",
+	"routes_profile_nav_my_profile": "My profile",
+	"routes_profile_nav_academy": "Academy",
+	"routes_profile_nav_connect_to_watch": "Connect to Watch",
+	"routes_profile_nav_settings": "Settings",
+	"routes_profile_nav_preferences": "Preferences",
+	"routes_profile_nav_contact": "Contact Us",
+	"routes_profile_nav_share": "Share our app",
+	"routes_profile_nav_rating": "Give us a rating",
+	"routes_profile_nav_privacy_policy": "Privacy policy",
+	"routes_profile_nav_terms_and_conditions": "Terms and Conditions",
+	"routes_profile_nav_logout": "Log out",
 
 	"routes_profile_preferences_heading": "Preferences"
 }

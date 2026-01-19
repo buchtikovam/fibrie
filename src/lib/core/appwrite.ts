@@ -1,6 +1,6 @@
 import { PUBLIC_APPWRITE_ENDPOINT, PUBLIC_APPWRITE_PROJECT_ID } from '$env/static/public';
 
-import { Account, Client, Databases } from 'appwrite';
+import { Account, AppwriteException, Client, Databases } from 'appwrite';
 
 // initialize client
 export const client = new Client();
@@ -14,7 +14,7 @@ export const databases = new Databases(client);
 // helper for error parsing
 export function getErrorMessage(error: unknown): string {
 	if (error && typeof error === 'object' && 'message' in error) {
-		return String((error as any).message);
+		return String((error as AppwriteException).message);
 	}
 	return 'An unexpected error occurred.';
 }
