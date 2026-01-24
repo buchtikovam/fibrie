@@ -1,9 +1,11 @@
-import type { Models } from 'appwrite';
+import { type Models } from 'appwrite';
 
-export type AuthStatus = 'loading' | 'authenticated' | 'guest';
+import type { UserPreferences } from '../preferences/types';
+
+export type AppUser = Models.User<UserPreferences>;
 
 export interface AuthState {
-	user: Models.User | null;
-	status: AuthStatus;
+	user: AppUser | null;
+	isLoading: boolean;
 	error: string | null;
 }

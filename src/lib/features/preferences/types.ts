@@ -1,39 +1,37 @@
-export type MeasurementSystem = 'metric' | 'imperial';
-export type CrochetTerm = 'US' | 'UK';
-export type AppTheme = 'light' | 'dark' | 'cupcake' | 'dracula' | 'system';
-
-export type CraftType = 'knitting' | 'crochet' | 'both';
-export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'couture';
-
+// onboarding
+export type CraftType = 'knitting' | 'crochet' | 'machine-knitting' | 'tunisian-crochet' | 'tapestry-crochet';
+export type SkillLevel = 'beginner' | 'intermediate' | 'advanced' | 'expert';
+export type PatternType = 'wearables' | 'accessories' | 'toys' | 'decor' | 'motifs' | 'niche' | 'other';
 export type YarnWeight = 'lace' | 'fingering' | 'sport' | 'dk' | 'worsted' | 'bulky' | 'super-bulky' | 'jumbo';
 
-export interface UserPreferences {
-	// general
-	theme: AppTheme;
-	keepScreenAwake: boolean;
-	hapticFeedback: boolean;
-	highContrastMode: boolean;
+// in-app
+export type AppTheme = 'autumn';
+export type CrochetTerm = 'US' | 'UK';
+export type MeasurementSystem = 'metric' | 'imperial';
 
-	// technical specs
+export interface UserPreferences {
+	theme: AppTheme;
 	measurementSystem: MeasurementSystem;
 	crochetTerms: CrochetTerm;
 	leftHandedMode: boolean;
 
 	// craft preferences
-	primaryCraft: CraftType;
+	preferredCraft: CraftType[];
 	skillLevel: SkillLevel;
-	favoriteYarnWeights: YarnWeight[];
+	preferredYarnWeights: YarnWeight[];
+	preferredPatternTypes: PatternType[];
+	companionName: string;
 }
 
 export const DEFAULT_PREFERENCES: UserPreferences = {
-	theme: 'cupcake',
-	keepScreenAwake: true,
-	hapticFeedback: true,
-	highContrastMode: false,
+	theme: 'autumn',
 	measurementSystem: 'metric',
 	crochetTerms: 'US',
 	leftHandedMode: false,
-	primaryCraft: 'both',
-	skillLevel: 'intermediate',
-	favoriteYarnWeights: ['dk', 'worsted'], // Most common default
+
+	preferredCraft: [],
+	skillLevel: 'beginner',
+	preferredYarnWeights: [],
+	preferredPatternTypes: [],
+	companionName: '',
 };

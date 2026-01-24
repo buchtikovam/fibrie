@@ -1,18 +1,14 @@
-import { Capacitor, SystemBarType, SystemBars, SystemBarsStyle } from '@capacitor/core';
+import { Capacitor } from '@capacitor/core';
+import { SystemBars, SystemBarsStyle } from '@capacitor/core';
 
-// We need to define or import this Enum since it was used in your snippet
-// If '@capacitor/core' doesn't export it directly yet, we define it to match the ABI.
-// Based on standard Cap patterns, it should be exported, but I'll add a safety fallback type.
-// export enum SystemBarType {
-// 	StatusBar = 'STATUS',
-// 	NavigationBar = 'NAVIGATION',
-// }
+// 🛡️ Strict Type Definitions
+type HexColor = string;
 
 export class DeviceManager {
 	private static instance: DeviceManager;
 
 	private constructor() {
-		// Singleton
+		/* Singleton */
 	}
 
 	public static getInstance(): DeviceManager {
@@ -23,54 +19,65 @@ export class DeviceManager {
 	}
 
 	/**
-	 * Hides both the Status Bar and Navigation Bar (Immersive Mode).
+	 * 🎨 Sets the Status Bar color using the new Capacitor 8 API.
+	 * @param color - Hex code (e.g. #14b8a6)
+	 * @param isDark - If true, text/icons will be dark (Style.Dark).
+	 */
+	public async setStatusBar(color: HexColor, isDark: boolean = false): Promise<void> {
+		if (!Capacitor.isNativePlatform()) return;
+
+		try {
+			// New v8 API: Set style (Text color)
+			await SystemBars.setStyle({
+				style: isDark ? SystemBarsStyle.Dark : SystemBarsStyle.Light,
+			});
+
+			// New v8 API: Set background color
+			// Note: v8 handles the "Edge-to-Edge" transparency automatically now!
+			await SystemBars.setStatusBarColor({ color });
+		} catch (error) {
+			console.error('🔥 [DeviceManager] Status Bar Error:', error);
+		}
+	}
+
+	/**
+	 * 🌈 Sets the Navigation Bar color (Android specific).
+	 */
+	public async setNavigationBar(color: HexColor, isDark: boolean = false): Promise<void> {
+		if (!Capacitor.isNativePlatform()) return;
+
+		try {
+			await SystemBars.setNavigationBarColor({ color });
+		} catch (error) {
+			console.error('🔥 [DeviceManager] Nav Bar Error:', error);
+		}
+	}
+
+	/**
+	 * 📱 Immersive Mode: Hides everything.
 	 */
 	public async enableImmersiveMode(): Promise<void> {
 		if (!Capacitor.isNativePlatform()) return;
 
 		try {
-			// "hideSystemBars" logic from your docs
-			await SystemBars.hide({
-				bar: SystemBarType.NavigationBar,
-			});
-
-			console.info('🌼 [DeviceManager]: Immersive mode enabled (SystemBars hidden).');
+			await SystemBars.hide(); // Hides both by default in v8
+			console.info('✨ [DeviceManager] Immersive Mode ON');
 		} catch (error) {
-			console.error('🔥 [DeviceManager]: Failed to hide system bars:', error);
+			console.error('🔥 [DeviceManager] Hide Bars Error:', error);
 		}
 	}
 
 	/**
-	 * Restores both bars.
+	 * 🔙 Restore Bars
 	 */
 	public async disableImmersiveMode(): Promise<void> {
 		if (!Capacitor.isNativePlatform()) return;
 
 		try {
-			await SystemBars.show({
-				bar: SystemBarType.NavigationBar,
-			});
-			// Optional: Reset style to Dark/Light preference
-			await SystemBars.setStyle({ style: SystemBarsStyle.Dark });
+			await SystemBars.show();
+			console.info('✨ [DeviceManager] Immersive Mode OFF');
 		} catch (error) {
-			console.error('🔥 [DeviceManager]: Failed to show system bars:', error);
-		}
-	}
-
-	/**
-	 * Hides ONLY the bottom navigation bar (keeps status bar).
-	 * Useful if you want to keep the clock/battery visible but use custom nav.
-	 */
-	public async hideBottomNavOnly(): Promise<void> {
-		if (!Capacitor.isNativePlatform()) return;
-
-		try {
-			// Precise usage from your docs
-			await SystemBars.hide({
-				bar: SystemBarType.NavigationBar,
-			});
-		} catch (error) {
-			console.error('🔥 [DeviceManager]: Failed to hide nav bar:', error);
+			console.error('🔥 [DeviceManager] Show Bars Error:', error);
 		}
 	}
 }

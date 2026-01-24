@@ -6,6 +6,15 @@
 	"components_dock_assistant": "Assistant",
 	"components_dock_profile": "Profile",
 
+	"routes_onboarding_slide_welcome_title": "Welcome to Fibrie",
+	"routes_onboarding_slide_welcome_description": "Your new crafting burrow awaits. Let’s make something soft and wonderful together!",
+	"routes_onboarding_slide_tools_title": "The Magic Toolkit",
+	"routes_onboarding_slide_tools_description": "Generate patterns, calculate yarn usage, and resize fits instantly. From distinct idea to perfect fit, we handle the math.",
+	"routes_onboarding_slide_gamify_title": "Hop to the Top!",
+	"routes_onboarding_slide_gamify_description": "Meet your fluffy creative companion! Complete daily quests, earn carrots, and level up.",
+	"routes_onboarding_slide_social_title": "The Creative Network",
+	"routes_onboarding_slide_social_description": "Connect with fellow crafters. It’s not just a feed; it’s a family of makers.",
+
 	"routes_explore_heading": "What do you want to make today?",
 
 	"routes_library_heading": "Your library",

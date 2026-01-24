@@ -1,6 +1,10 @@
 <script lang="ts">
-	import Dock from '$lib/features/navigation/components/Dock.svelte';
+	import { authStore } from '$lib/features/auth/state.svelte';
+	import { onboardingStore } from '$lib/features/onboarding/store.svelte';
 	import { SystemBarType, SystemBars } from '@capacitor/core';
+
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 
 	import '../app.css';
 	import type { LayoutProps } from './$types';
@@ -12,16 +16,38 @@
 			await SystemBars.hide({
 				bar: SystemBarType.NavigationBar,
 			});
+			// await SystemBars.hide({
+			// 	bar: SystemBarType.StatusBar,
+			// });
 		})();
+	});
+
+	$effect(() => {
+		onboardingStore.init();
+
+		const currentPath = page.route.id;
+
+		if (onboardingStore.isFirstLaunch === true) {
+			console.log(currentPath);
+
+			if (!currentPath?.startsWith('/onboarding')) {
+				goto('/onboarding');
+			}
+
+			return;
+		}
+
+		if (onboardingStore.isFirstLaunch === false) {
+			authStore.init();
+		}
 	});
 </script>
 
-<div
-	class="bg-base-100 flex h-dvh w-full flex-col pt-[env(safe-area-inset-top)] sm:pt-6 pb-[env(safe-area-inset-bottom)]"
->
-	<main class="relative flex flex-1 flex-col min-h-0">
+<div class=" flex h-dvh w-full flex-col">
+	{#if onboardingStore.isLoading}
+		<!--TODO: loading animation; also if auth loading-->
+		<p>...</p>
+	{:else}
 		{@render children?.()}
-	</main>
-
-	<Dock />
+	{/if}
 </div>
