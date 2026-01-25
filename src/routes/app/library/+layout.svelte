@@ -2,13 +2,12 @@
 	import type { TabItem } from '$lib/features/navigation/types';
 
 	import * as m from '$lib/paraglide/messages';
-	import PageContainer from '$lib/components/layout/containers/PageContainer.svelte';
+	import Tabs from '$lib/ui/components/tabs/Tabs.svelte';
+	import Heading from '$lib/ui/components/typography/Heading.svelte';
+	import PageContainer from '$lib/ui/layout/containers/PageContainer.svelte';
 	import { onMount } from 'svelte';
 
 	import { goto } from '$app/navigation';
-
-	import Tabs from '$ui/tabs/Tabs.svelte';
-	import Heading from '$ui/typography/Heading.svelte';
 
 	import type { LayoutProps } from './$types';
 

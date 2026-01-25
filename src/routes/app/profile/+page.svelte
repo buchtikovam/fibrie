@@ -4,8 +4,7 @@
 	import ProfileMenuLink from '$lib/features/profile/components/ProfileMenuLink.svelte';
 	import ProfileSummaryCard from '$lib/features/profile/components/ProfileSummaryCard.svelte';
 	import { getProfileMenuItems } from '$lib/features/profile/config';
-
-	import Heading from '$ui/typography/Heading.svelte';
+	import Heading from '$lib/ui/components/typography/Heading.svelte';
 
 	let items = $derived(getProfileMenuItems());
 </script>

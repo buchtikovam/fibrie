@@ -1,11 +1,10 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import SubHeading from '$lib/ui/components/typography/SubHeading.svelte';
 
 	import { resolve } from '$app/paths';
 
 	import { ChevronRight } from '$icons';
-
-	import SubHeading from '$ui/typography/SubHeading.svelte';
 </script>
 
 <a

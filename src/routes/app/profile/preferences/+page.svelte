@@ -1,7 +1,6 @@
 <script>
 	import * as m from '$lib/paraglide/messages.js';
-
-	import Heading from '$ui/typography/Heading.svelte';
+	import Heading from '$lib/ui/components/typography/Heading.svelte';
 </script>
 
 <header class="flex-none">

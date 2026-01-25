@@ -1,5 +1,8 @@
-import { DEFAULT_PREFERENCES, type UserPreferences } from '$lib/features/preferences/types';
+import { type UserPreferences } from '$lib/features/preferences/types';
 import { Preferences } from '@capacitor/preferences';
+
+import { goto } from '$app/navigation';
+import { resolve } from '$app/paths';
 
 import { STORAGE_KEYS } from './types';
 
@@ -7,7 +10,6 @@ class OnboardingStore {
 	public isFirstLaunch = $state<boolean | undefined>(undefined);
 	public isLoading = $state(true);
 
-	public tempPrefs = $state<UserPreferences>(DEFAULT_PREFERENCES);
 	public currentIndex = $state(0);
 
 	constructor() {
@@ -18,11 +20,6 @@ class OnboardingStore {
 		try {
 			const { value } = await Preferences.get({ key: STORAGE_KEYS.HAS_LAUNCHED });
 			this.isFirstLaunch = value === null;
-
-			const storedPrefs = await Preferences.get({ key: STORAGE_KEYS.TEMP_PREFS });
-			if (storedPrefs.value) {
-				this.tempPrefs = JSON.parse(storedPrefs.value);
-			}
 		} catch (e) {
 			console.error('[Onboarding] Init Error:', e);
 			this.isFirstLaunch = false;
@@ -30,25 +27,12 @@ class OnboardingStore {
 			this.isLoading = false;
 		}
 	}
-	public updateTempPref(key: keyof UserPreferences, value: unknown) {
-		this.tempPrefs = { ...this.tempPrefs, [key]: value };
-		this.persistTempPrefs().catch(console.error);
-	}
 
-	private async persistTempPrefs() {
+	async persistTempPrefs(tempPrefs: UserPreferences) {
 		await Preferences.set({
 			key: STORAGE_KEYS.TEMP_PREFS,
-			value: JSON.stringify(this.tempPrefs),
+			value: JSON.stringify(tempPrefs),
 		});
-	}
-
-	async completeOnboarding() {
-		try {
-			await Preferences.set({ key: STORAGE_KEYS.HAS_LAUNCHED, value: 'true' });
-			this.isFirstLaunch = false;
-		} catch (e) {
-			console.error('[Onboarding] Completion Error:', e);
-		}
 	}
 
 	async getAndClearTempPrefs(): Promise<UserPreferences | null> {
@@ -56,10 +40,22 @@ class OnboardingStore {
 
 		if (value) {
 			await Preferences.remove({ key: STORAGE_KEYS.TEMP_PREFS });
-			this.tempPrefs = DEFAULT_PREFERENCES;
 			return JSON.parse(value);
 		}
 		return null;
+	}
+
+	async completeOnboarding(tempPrefs: UserPreferences) {
+		try {
+			await onboardingStore.persistTempPrefs(tempPrefs);
+
+			await Preferences.set({ key: STORAGE_KEYS.HAS_LAUNCHED, value: 'true' });
+			this.isFirstLaunch = false;
+
+			goto(resolve('/auth')).catch(console.error);
+		} catch (e) {
+			console.error('[Onboarding] Completion Error:', e);
+		}
 	}
 }
 

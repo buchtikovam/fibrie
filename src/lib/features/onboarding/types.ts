@@ -19,12 +19,25 @@ export interface OnboardingSlide {
 	stickers: StickerPosition[];
 }
 
-export interface OnboardingState {
-	isFirstLaunch: boolean;
-	isLoading: boolean;
-}
-
 export const STORAGE_KEYS = {
 	HAS_LAUNCHED: 'app_has_launched_v1', // versioning keys helps with future migrations
 	TEMP_PREFS: 'app_temp_prefs_v1',
 } as const;
+
+// --- ONBOARDING PREFERENCES ---
+
+export type PreferenceSelectionMode = 'single' | 'multiple';
+
+export interface PreferenceSelectionOption {
+	label: string;
+	description?: string;
+	value: string;
+	icon?: string;
+}
+
+export interface PreferenceQuestionStep {
+	id: string;
+	header: string;
+	mode: PreferenceSelectionMode;
+	options: PreferenceSelectionOption[];
+}

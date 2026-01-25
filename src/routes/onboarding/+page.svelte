@@ -4,13 +4,18 @@
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+
 	import { ArrowRight, Check } from '$icons';
 
 	function handleNext() {
-		onboardingStore.currentIndex++;
+		if (isLastSlide) {
+			goto(resolve('/onboarding/preferences'));
+		} else {
+			onboardingStore.currentIndex++;
+		}
 	}
-
-	function handleSkip() {}
 
 	let onboardingSlides = $derived(getOnboardingSlides());
 	let currentSlide = $derived(onboardingSlides[onboardingStore.currentIndex]);
@@ -54,12 +59,6 @@
 						<ArrowRight class="size-6" stroke-width="3" />
 					{/if}
 				</button>
-
-				<div class="h-4">
-					{#if !isLastSlide}
-						<button class="btn btn-ghost btn-sm {currentSlide.textSecondaryColor}"> Skip </button>
-					{/if}
-				</div>
 			</div>
 		</div>
 	</div>

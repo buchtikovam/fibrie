@@ -1,9 +1,8 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import Heading from '$lib/ui/components/typography/Heading.svelte';
 
 	import { Search } from '$icons';
-
-	import Heading from '$ui/typography/Heading.svelte';
 </script>
 
 <Heading>{m.routes_explore_heading()}</Heading>

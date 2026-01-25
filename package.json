@@ -68,7 +68,6 @@
 		"@capacitor/ios": "^8.0.0",
 		"@capacitor/preferences": "^8.0.0",
 		"@fontsource-variable/outfit": "^5.2.6",
-		"@sentry/sveltekit": "^10.5.0",
 		"appwrite": "^18.2.0",
 		"prettier-plugin-multiline-arrays": "^4.0.3",
 		"set-interval-async": "^3.0.3",

@@ -1,9 +1,9 @@
 <script lang="ts">
+	import SubHeading from '$lib/ui/components/typography/SubHeading.svelte';
+
 	import { resolve } from '$app/paths';
 
 	import { ChevronRight } from '$icons';
-
-	import SubHeading from '$ui/typography/SubHeading.svelte';
 
 	const href = resolve('/');
 </script>
