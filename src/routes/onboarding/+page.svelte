@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { cubicOut } from 'svelte/easing';
-	import { fly } from 'svelte/transition';
-
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 
 	import { ArrowRight, Check } from '$icons';
+	import { cubicOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
 
 	import { getOnboardingSlides } from './data';
 
@@ -23,6 +22,8 @@
 	let currentSlide = $derived(onboardingSlides[currentIndex]);
 	let isLastSlide = $derived(onboardingSlides.length === currentIndex + 1);
 </script>
+
+awd
 
 <!--{#if currentSlide}-->
 <!--	<div-->

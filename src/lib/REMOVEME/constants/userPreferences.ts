@@ -1,4 +1,4 @@
-import type { PreferenceQuestionStep } from '$lib/types/userPreferences';
+import type { PreferenceQuestionStep } from '$lib/REMOVEME/types/userPreferences';
 
 import * as m from '$lib/paraglide/messages';
 
