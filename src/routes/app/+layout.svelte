@@ -3,8 +3,10 @@
 
 	import type { LayoutProps } from './$types';
 
-	let { children }: LayoutProps = $props();
+	let { children, data }: LayoutProps = $props();
 </script>
+
+{data.user}
 
 <main
 	class="relative flex flex-1 flex-col min-h-0 pt-[env(safe-area-inset-top)] sm:pt-6 pb-[env(safe-area-inset-bottom)] bg-base-100"

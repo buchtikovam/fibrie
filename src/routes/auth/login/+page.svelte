@@ -1,27 +1,36 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
-	import OAuthButtons from '$lib/features/auth/components/OAuthButtons.svelte';
-	import { authStore } from '$lib/features/auth/store.svelte';
-	import LineSeparator from '$lib/ui/components/separators/LineSeparator.svelte';
+	// <!--	import OAuthButtons from '$lib/features/auth/components/OAuthButtons.svelte';-->
+	// <!--	import { authStore } from '$lib/features/auth/store.svelte';-->
+	// <!--	import LineSeparator from '$lib/ui/components/separators/LineSeparator.svelte';-->
+
+	import { helper } from '$lib';
 
 	import { goto } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
 	import { resolve } from '$app/paths';
+
+	import { account } from '$appwrite/account';
 
 	let email = $state('');
 	let password = $state('');
+	let error = $state<string | undefined>(undefined);
 
-	async function handleSubmit(e: SubmitEvent) {
-		e.preventDefault();
-		const { success } = await authStore.login({ email, password });
-
-		if (success) {
-			await goto(resolve('/app/dashboard'));
+	async function createEmailPasswordSession() {
+		try {
+			await account.createEmailPasswordSession({ email, password });
+		} catch (error: unknown) {
+			console.error(helper.error.toString(error));
+			return;
 		}
+
+		await invalidate('app:user');
+		await goto(resolve('/app/dashboard'));
 	}
 </script>
 
 <div class="card max-w-sm bg-base-100 w-full">
-	<form onsubmit={handleSubmit} class="card-body">
+	<form onsubmit={createEmailPasswordSession} class="card-body">
 		<h1 class="card-title text-2xl mb-4 font-bold justify-center">{m.routes_auth_login_heading()} 👋</h1>
 
 		<OAuthButtons usage="login" />

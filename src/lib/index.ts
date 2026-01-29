@@ -1,1 +1,21 @@
-// place files you want to import through the `$lib` alias in this folder.
+import { AppwriteException } from '$appwrite';
+
+export const helper = {
+	error: {
+		toString: (error: unknown): string => {
+			if (error instanceof AppwriteException) {
+				return error.message;
+			}
+
+			if (error instanceof Error) {
+				return error.message;
+			}
+
+			if (typeof error === 'string') {
+				return error;
+			}
+
+			return 'unknown';
+		},
+	},
+};
