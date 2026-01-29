@@ -22,3 +22,11 @@ vite.config.ts.timestamp-*
 # Paraglide
 src/lib/paraglide
 project.inlang/cache/
+
+# Android
+/android/app/build
+/android/app/src/main/assets
+/android/build
+
+# iOS
+/ios/App/App/public

@@ -6,3 +6,9 @@ package-lock.json
 
 # Appwrite
 /src/lib/appwrite/database/appwrite.d.ts
+
+# Android
+/android
+
+# iOS
+/ios
