@@ -4,6 +4,6 @@
 	let { children }: LayoutProps = $props();
 </script>
 
-<div class="h-full p-6 w-full flex flex-col gap-8 items-center justify-center bg-primary/10">
+<div class="flex h-full w-full flex-col items-center justify-center gap-8 bg-primary/10 p-6">
 	{@render children?.()}
 </div>

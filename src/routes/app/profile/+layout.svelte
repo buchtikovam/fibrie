@@ -8,6 +8,6 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="flex h-full w-full flex-col p-6 pb-0 gap-4">
+<div class="flex h-full w-full flex-col gap-4 p-6 pb-0">
 	{@render children?.()}
 </div>

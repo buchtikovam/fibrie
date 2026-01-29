@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { TabItem } from '$lib/features/navigation/types';
-
 	import { page } from '$app/state';
+
+	import type { TabItem } from '$lib/features/navigation/types';
 
 	interface Props {
 		tabs: TabItem[];
@@ -10,7 +10,7 @@
 	let { tabs }: Props = $props();
 </script>
 
-<div role="tablist" class="tabs-sm tabs-box flex">
+<div role="tablist" class="tabs-box flex tabs-sm">
 	{#each tabs as tab (tab.id)}
 		{@const active = page.url.pathname === tab.href}
 

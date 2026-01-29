@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 
 	import { ArrowRight, Check } from '$icons';
+
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 

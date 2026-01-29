@@ -10,7 +10,7 @@
 	let { usage }: Props = $props();
 </script>
 
-<button class="btn btn-outline w-full flex gap-2">
+<button class="btn flex w-full gap-2 btn-outline">
 	<AppleIcon />
 	{#if usage === 'register'}
 		{m.routes_auth_register_oauth_button_apple()}
@@ -19,7 +19,7 @@
 	{/if}
 </button>
 
-<button class="btn btn-outline w-full flex gap-3">
+<button class="btn flex w-full gap-3 btn-outline">
 	<GoogleIcon />
 	{#if usage === 'register'}
 		{m.routes_auth_register_oauth_button_google()}

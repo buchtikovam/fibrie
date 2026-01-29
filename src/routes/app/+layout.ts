@@ -1,10 +1,10 @@
-import { preferences } from '$lib/preferences';
-
 import { redirect } from '@sveltejs/kit';
 
 import { resolve } from '$app/paths';
 
 import { account } from '$appwrite/account';
+
+import { preferences } from '$lib/preferences';
 
 import type { LayoutLoad } from './$types';
 

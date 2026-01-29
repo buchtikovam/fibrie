@@ -1,8 +1,8 @@
-import { preferences } from '$lib/preferences';
-
 import { redirect } from '@sveltejs/kit';
 
 import { resolve } from '$app/paths';
+
+import { preferences } from '$lib/preferences';
 
 import type { PageLoad } from './$types';
 

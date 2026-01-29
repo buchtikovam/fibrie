@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	import type { TabItem } from '$lib/features/navigation/types';
 
 	import * as m from '$lib/paraglide/messages';
@@ -6,8 +8,6 @@
 	import Heading from '$lib/ui/components/typography/Heading.svelte';
 	import PageContainer from '$lib/ui/layout/containers/PageContainer.svelte';
 	import { onMount } from 'svelte';
-
-	import { goto } from '$app/navigation';
 
 	import type { LayoutProps } from './$types';
 

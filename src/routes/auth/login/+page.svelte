@@ -1,16 +1,16 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
+	import { resolve } from '$app/paths';
+
+	import { account } from '$appwrite/account';
+
 	import * as m from '$lib/paraglide/messages';
 	// <!--	import OAuthButtons from '$lib/features/auth/components/OAuthButtons.svelte';-->
 	// <!--	import { authStore } from '$lib/features/auth/store.svelte';-->
 	// <!--	import LineSeparator from '$lib/ui/components/separators/LineSeparator.svelte';-->
 
 	import { helper } from '$lib';
-
-	import { goto } from '$app/navigation';
-	import { invalidate } from '$app/navigation';
-	import { resolve } from '$app/paths';
-
-	import { account } from '$appwrite/account';
 
 	let email = $state('');
 	let password = $state('');
@@ -29,9 +29,9 @@
 	}
 </script>
 
-<div class="card max-w-sm bg-base-100 w-full">
+<div class="card w-full max-w-sm bg-base-100">
 	<form onsubmit={createEmailPasswordSession} class="card-body">
-		<h1 class="card-title text-2xl mb-4 font-bold justify-center">{m.routes_auth_login_heading()} 👋</h1>
+		<h1 class="mb-4 card-title justify-center text-2xl font-bold">{m.routes_auth_login_heading()} 👋</h1>
 
 		<OAuthButtons usage="login" />
 		<LineSeparator label={m.routes_auth_line_separator_label()} />
@@ -43,7 +43,7 @@
 				placeholder={m.routes_auth_login_input_email_placeholder()}
 				id="email"
 				bind:value={email}
-				class="input input-bordered w-full"
+				class="input-bordered input w-full"
 				required
 			/>
 		</div>
@@ -58,17 +58,17 @@
 				id="password"
 				placeholder="••••••••"
 				bind:value={password}
-				class="input input-bordered w-full"
+				class="input-bordered input w-full"
 				required
 			/>
 		</div>
 
 		{#if authStore.error}
-			<div role="alert" class="alert alert-error mt-4 text-sm"><span>{authStore.error}</span></div>
+			<div role="alert" class="mt-4 alert text-sm alert-error"><span>{authStore.error}</span></div>
 		{/if}
 
 		<div class=" mt-6 flex flex-col gap-4">
-			<button class="btn btn-primary w-full" disabled={authStore.isLoading}>
+			<button class="btn w-full btn-primary" disabled={authStore.isLoading}>
 				{m.routes_auth_login_submit()}
 			</button>
 

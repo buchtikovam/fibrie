@@ -70,7 +70,7 @@
 			{value}
 			checked={isChecked}
 			onchange={handleChange}
-			class="checkbox checkbox-primary rounded-lg h-6 w-6 border-2"
+			class="checkbox h-6 w-6 rounded-lg border-2 checkbox-primary"
 		/>
 	{:else}
 		<input
@@ -79,7 +79,7 @@
 			{value}
 			checked={isChecked}
 			onchange={handleChange}
-			class="radio radio-primary h-6 w-6 border-2"
+			class="radio h-6 w-6 border-2 radio-primary"
 		/>
 	{/if}
 </label>

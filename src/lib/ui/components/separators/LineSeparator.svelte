@@ -6,8 +6,8 @@
 	let { label }: Props = $props();
 </script>
 
-<div class="flex gap-4 items-center my-4">
-	<div class="h-px bg-secondary w-full"></div>
+<div class="my-4 flex items-center gap-4">
+	<div class="h-px w-full bg-secondary"></div>
 	<p class="text-secondary">{label}</p>
-	<div class="h-px bg-secondary w-full"></div>
+	<div class="h-px w-full bg-secondary"></div>
 </div>
