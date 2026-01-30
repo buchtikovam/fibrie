@@ -1,0 +1,12 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"routes_onboarding_slide_welcome_title": "Vítej ve světě Fibrie",
+	"routes_onboarding_slide_welcome_description": "Tvé nové kreativní doupě už čeká. Pojďme společně umotat něco měkoučkého a božího!",
+	"routes_onboarding_slide_tools_title": "Kouzelná výbava",
+	"routes_onboarding_slide_tools_description": "Vytvářej návody, spočítej klubíčka a upravuj velikosti lusknutím prstu. Od nápadu až po perfektní střih – tu nudnou matiku bereme na sebe.",
+	"routes_onboarding_slide_gamify_title": "Vyskákej až na vrchol!",
+	"routes_onboarding_slide_gamify_description": "Seznam se se svým chlupatým parťákem! Plň denní výzvy, sbírej mrkvičky a zvyšuj svůj level.",
+	"routes_onboarding_slide_social_title": "Parta tvořivců",
+	"routes_onboarding_slide_social_description": "Najdi spřízněné duše. Tohle není jen další sociální síť, ale rodina, která mluví stejnou řečí – tou tvojí."
+}

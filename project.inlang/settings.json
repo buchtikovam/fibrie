@@ -2,7 +2,7 @@
 	"$schema": "https://inlang.com/schema/project-settings",
 	"baseLocale": "en",
 	"locales": [
-		"cz",
+		"cs",
 		"sk",
 		"en",
 		"es",

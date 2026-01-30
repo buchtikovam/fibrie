@@ -1,16 +1,35 @@
 import { Preferences } from '@capacitor/preferences';
 
-function structure(key: string) {
+function structure<T>(key: string) {
 	return {
-		get: async (): Promise<string | null> => (await Preferences.get({ key })).value,
-		set: async (value: string): Promise<void> => await Preferences.set({ key, value }),
-		exist: async (): Promise<boolean> => (await Preferences.get({ key })).value !== null,
-		remove: async (): Promise<void> => await Preferences.remove({ key }),
+		get: async (): Promise<T | null> => {
+			const { value } = await Preferences.get({ key });
+			if (value === null) return null;
+
+			try {
+				return JSON.parse(value) as T;
+			} catch {
+				return value as unknown as T;
+			}
+		},
+
+		set: async (value: T): Promise<void> => {
+			await Preferences.set({ key, value: typeof value === 'string' ? value : JSON.stringify(value) });
+		},
+
+		exist: async (): Promise<boolean> => {
+			const { value } = await Preferences.get({ key });
+			return value !== null;
+		},
+
+		remove: async (): Promise<void> => {
+			await Preferences.remove({ key });
+		},
 	};
 }
 
 export const preferences = {
-	new: structure('new'),
-	tempPreferences: structure('tempPreferences'),
-	session: structure('session'),
+	boarded: structure<string>('new'),
+	prefs: structure<Appwrite.Preferences>('preferences'),
+	session: structure(<string>'session'),
 };

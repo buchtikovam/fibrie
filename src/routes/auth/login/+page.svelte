@@ -5,16 +5,15 @@
 
 	import { account } from '$appwrite/account';
 
-	import * as m from '$lib/paraglide/messages';
-	// <!--	import OAuthButtons from '$lib/features/auth/components/OAuthButtons.svelte';-->
-	// <!--	import { authStore } from '$lib/features/auth/store.svelte';-->
-	// <!--	import LineSeparator from '$lib/ui/components/separators/LineSeparator.svelte';-->
+	import OAuthButtons from '$ui/components/buttons/OAuthButtons.svelte';
+	import LineSeparator from '$ui/components/separators/LineSeparator.svelte';
 
+	import * as m from '$lib/paraglide/messages';
 	import { helper } from '$lib';
 
 	let email = $state('');
 	let password = $state('');
-	let error = $state<string | undefined>(undefined);
+	// let error = $state<string | undefined>(undefined);
 
 	async function createEmailPasswordSession() {
 		try {
@@ -51,7 +50,7 @@
 		<div>
 			<label class="label flex items-center justify-between" for="password">
 				<span class="label-text">{m.routes_auth_login_input_password_label()}</span>
-				<a href="/auth/password-request" class="link">{m.routes_auth_login_input_password_lost()}</a>
+				<a href={resolve('/auth/password-request')} class="link">{m.routes_auth_login_input_password_lost()}</a>
 			</label>
 			<input
 				type="password"
@@ -63,18 +62,18 @@
 			/>
 		</div>
 
-		{#if authStore.error}
-			<div role="alert" class="mt-4 alert text-sm alert-error"><span>{authStore.error}</span></div>
-		{/if}
+		<!--{#if authStore.error}-->
+		<!--			<div role="alert" class="mt-4 alert text-sm alert-error"><span>{authStore.error}</span></div>-->
+		<!--		{/if}-->
 
 		<div class=" mt-6 flex flex-col gap-4">
-			<button class="btn w-full btn-primary" disabled={authStore.isLoading}>
+			<button class="btn w-full btn-primary">
 				{m.routes_auth_login_submit()}
 			</button>
 
 			<div class="text-center text-sm">
 				{m.routes_auth_login_is_new_account()}
-				<a href="/auth/register" class="link font-bold">{m.routes_auth_login_redirect_register()}</a>
+				<a href={resolve('/auth/register')} class="link font-bold">{m.routes_auth_login_redirect_register()}</a>
 			</div>
 		</div>
 	</form>
