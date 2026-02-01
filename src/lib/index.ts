@@ -4,6 +4,9 @@ export const helper = {
 	error: {
 		toString: (error: unknown): string => {
 			if (error instanceof AppwriteException) {
+				console.log(error.type);
+				console.log(error.code);
+
 				return error.message;
 			}
 
@@ -16,6 +19,11 @@ export const helper = {
 			}
 
 			return 'unknown';
+		},
+		type: (error: unknown): string | undefined => {
+			if (error instanceof AppwriteException) {
+				return error.type;
+			}
 		},
 	},
 };

@@ -47,30 +47,24 @@
 	"routes_onboarding_preferences_step_patterns_niche_label": "Niche",
 	"routes_onboarding_preferences_step_patterns_niche_description": "The weird and wonderful of the pattern world",
 
-	"routes_auth_login_oauth_button_apple": "Log in with Apple",
-	"routes_auth_register_oauth_button_apple": "Register with Apple",
-	"routes_auth_login_oauth_button_google": "Log in with Google",
-	"routes_auth_register_oauth_button_google": "Register with Google",
+	"routes_auth_heading": "Welcome to Fibrie",
+	"routes_auth_oauth_button_apple": "Log in with Apple",
+	"routes_auth_oauth_button_google": "Log in with Google",
 	"routes_auth_line_separator_label": "OR",
-
-	"routes_auth_login_heading": "Welcome back!",
-	"routes_auth_login_input_email_label": "Email",
-	"routes_auth_login_input_email_placeholder": "mail@site.com",
-	"routes_auth_login_input_password_label": "Password",
-	"routes_auth_login_input_password_lost": "Forgot password?",
-	"routes_auth_login_submit": "Login",
-	"routes_auth_login_is_new_account": "Are you new?",
-	"routes_auth_login_redirect_register": "Create account",
-
-	"routes_auth_register_heading": "Join us!",
-	"routes_auth_register_input_name_label": "Your name",
-	"routes_auth_register_input_name_placeholder": "Jane Doe",
-	"routes_auth_register_input_email_label": "Email",
-	"routes_auth_register_input_email_placeholder": "mail@site.com",
-	"routes_auth_register_input_password_label": "Password",
-	"routes_auth_register_submit": "Register",
-	"routes_auth_register_has_account": "Have an account?",
-	"routes_auth_register_redirect_login": "Log in",
+	"routes_auth_input_email_label": "Log in with email",
+	"routes_auth_input_email_placeholder": "mail@example.com",
+	"routes_auth_input_email_error_required": "Email is required",
+	"routes_auth_input_email_error_invalid": "Email format is invalid",
+	"routes_auth_input_secret_label": "Secret code",
+	"routes_auth_input_secret_error_length": "Secret muct be exactly {secretLength} digits",
+	"routes_auth_submit": "Login",
+	"routes_auth_session_error": [
+		{
+			"match": {
+				"type=*": "Invalid "
+			}
+		}
+	],
 
 	"routes_explore_heading": "What do you want to make today?",
 

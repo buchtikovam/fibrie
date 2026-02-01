@@ -29,6 +29,19 @@
 	let isLastStep = $derived(currentStepIndex === totalSteps - 1);
 	let progressValue = $derived(((currentStepIndex + 1) / totalSteps) * 100);
 
+	let isStepValid = $derived.by(() => {
+		const value = answers[currentStep.id as keyof Appwrite.Preferences];
+		if (value === undefined || value === null) return false;
+
+		if (Array.isArray(value)) {
+			return value.length > 0;
+		}
+
+		if (typeof value === 'boolean') return true;
+
+		return String(value).length > 0;
+	});
+
 	function handleNext() {
 		if (isLastStep) {
 			submitData();
@@ -46,7 +59,7 @@
 	async function submitData() {
 		await preferences.boarded.set(String(true));
 		await preferences.prefs.set(answers);
-		await goto(resolve('/auth/register'));
+		await goto(resolve('/auth'));
 	}
 </script>
 
@@ -114,8 +127,7 @@
 			<button
 				class="btn w-full rounded-full shadow-xl transition-all btn-lg btn-primary"
 				onclick={handleNext}
-				disabled={!answers[currentStep.id] ||
-					(Array.isArray(answers[currentStep.id]) && answers[currentStep.id].length === 0)}
+				disabled={!isStepValid}
 			>
 				{isLastStep ? 'Finish Setup' : 'Continue'}
 			</button>

@@ -1,5 +1,5 @@
 export interface PreferenceStep {
-	id: string;
+	id: keyof Appwrite.Preferences;
 	header: string;
 	mode: 'single' | 'multiple';
 	options: {

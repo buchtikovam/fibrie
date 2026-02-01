@@ -84,6 +84,7 @@
 		"@capacitor/device": "8.0.0",
 		"@capacitor/ios": "8.0.2",
 		"@capacitor/preferences": "8.0.0",
-		"appwrite": "21.5.0"
+		"appwrite": "21.5.0",
+		"valibot": "1.2.0"
 	}
 }
