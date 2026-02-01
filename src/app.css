@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 @plugin 'daisyui' {
-	themes: autumn --default;
+	themes: light --default;
 }
 
 * {
@@ -23,7 +23,6 @@
 	input:-webkit-autofill:focus {
 		-webkit-box-shadow: 0 0 0 1000px theme('colors.base-100') inset !important;
 		-webkit-text-fill-color: theme('colors.base-content') !important;
-
 		transition: background-color 5000s ease-in-out 0s;
 		border-radius: inherit;
 	}

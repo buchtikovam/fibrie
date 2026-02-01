@@ -6,8 +6,9 @@
 
 	import { Search } from '$icons';
 
+	import Heading from '$ui/components/typography/Heading.svelte';
+
 	import * as m from '$lib/paraglide/messages';
-	import Heading from '$lib/ui/components/typography/Heading.svelte';
 </script>
 
 <Heading>{m.routes_explore_heading()}</Heading>

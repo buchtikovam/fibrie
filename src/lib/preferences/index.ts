@@ -29,7 +29,7 @@ function structure<T>(key: string) {
 }
 
 export const preferences = {
-	boarded: structure<string>('new'),
+	boarded: structure<string>('boarded'),
 	prefs: structure<Appwrite.Preferences>('preferences'),
 	session: structure(<string>'session'),
 };

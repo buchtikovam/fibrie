@@ -1,10 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"components_dock_explore": "Explore",
+	"components_dock_home": "Home",
 	"components_dock_library": "Your library",
 	"components_dock_tools": "Tools",
-	"components_dock_assistant": "Assistant",
-	"components_dock_profile": "Profile",
+	"components_dock_burrow": "Burrow",
+	"components_dock_connect": "Connect",
 
 	"routes_onboarding_slide_welcome_title": "Welcome to Fibrie",
 	"routes_onboarding_slide_welcome_description": "Your new crafting burrow awaits. Let’s make something soft and wonderful together!",
@@ -61,7 +61,8 @@
 	"routes_auth_session_error": [
 		{
 			"match": {
-				"type=*": "Invalid "
+				"type=user_invalid_token": "Invalid secret code",
+				"type=*": "Login server error"
 			}
 		}
 	],

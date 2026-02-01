@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import { resolve } from '$app/paths';
 
 import * as m from '$lib/paraglide/messages';
-import { BookOpenText, Hammer, Rabbit, Search, User } from '@lucide/svelte';
+import { BookOpenText, Earth, Hammer, House, Rabbit } from '@lucide/svelte';
 
 import type { LayoutLoad } from './$types';
 import type { DockItem } from './types';
@@ -21,11 +21,11 @@ export const load: LayoutLoad = async ({ parent }) => {
 	return {
 		user: user,
 		dock: [
-			{ id: 'explore', label: m.components_dock_explore(), href: '/app/dashboard', icon: Search },
+			{ id: 'home', label: m.components_dock_home(), href: '/app', icon: House },
 			{ id: 'library', label: m.components_dock_library(), href: '/app/library', icon: BookOpenText },
-			{ id: 'assistant', label: m.components_dock_assistant(), href: '/app/assistant', icon: Rabbit },
+			{ id: 'burrow', label: m.components_dock_burrow(), href: '/app/burrow', icon: Rabbit },
 			{ id: 'tools', label: m.components_dock_tools(), href: '/app/tools', icon: Hammer },
-			{ id: 'profile', label: m.components_dock_profile(), href: '/app/profile', icon: User },
+			{ id: 'profile', label: m.components_dock_connect(), href: '/app/connect', icon: Earth },
 		] as DockItem[],
 	};
 };

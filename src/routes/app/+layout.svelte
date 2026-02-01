@@ -13,9 +13,9 @@
 </script>
 
 <main
-	class="relative flex min-h-0 flex-1 flex-col bg-base-100 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] sm:pt-6"
+	class="relative flex min-h-0 flex-1 flex-col bg-base-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
 >
-	{@render children?.()}
+	{@render children?.()}@
 </main>
 
 <div class="dock relative dock-md rounded-t-3xl border-t-0 pb-1">

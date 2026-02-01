@@ -56,8 +56,9 @@
 		try {
 			token = await account.createEmailToken({ userId: ID.unique(), email });
 		} catch (error: unknown) {
-			console.error(helper.error.toString(error));
-			return;
+			alert(error);
+			// 	console.error(helper.error.toString(error));
+			// 	return;
 		}
 	}
 
@@ -66,17 +67,19 @@
 
 		try {
 			await account.createSession({ userId: token.userId, secret });
-			await account.updatePrefs({
-				prefs: (await preferences.prefs.get()) as Partial<typeof preferences.prefs.get>,
-			});
-		} catch (error: unknown) {
-			console.error(helper.error.toString(error));
 
+			const prefs: Partial<typeof preferences.prefs.get> | null = await preferences.prefs.get();
+			if (prefs) {
+				await account.updatePrefs({ prefs });
+				await preferences.prefs.remove();
+			}
+		} catch (error: unknown) {
+			errors['secret'] = m.routes_auth_session_error({ type: helper.error.type(error) ?? '' });
 			return;
 		}
 
 		await invalidate('app:user');
-		await goto(resolve('/app/dashboard'));
+		await goto(resolve('/app'));
 	}
 </script>
 
