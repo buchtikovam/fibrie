@@ -8,6 +8,6 @@ export const load: PageLoad = async ({ parent }) => {
 	const { user } = await parent();
 
 	if (user) {
-		throw redirect(303, resolve('/app/dashboard'));
+		throw redirect(303, resolve('/app'));
 	}
 };
