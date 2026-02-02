@@ -7,6 +7,7 @@
 		"vite:dev": "vite dev --host --port=5173",
 		"vite:build": "vite build",
 		"vite:preview": "vite preview",
+		"vite:preview:production": "node",
 		"cap:sync": "npx cap sync",
 		"cap:android:open": "npx cap open android",
 		"cap:android:run:dev": "npx cap run android --live-reload --port=5173",
@@ -85,6 +86,7 @@
 		"@capacitor/ios": "8.0.2",
 		"@capacitor/preferences": "8.0.0",
 		"appwrite": "21.5.0",
+		"posthog-js": "1.336.4",
 		"valibot": "1.2.0"
 	}
 }

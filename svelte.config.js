@@ -17,6 +17,9 @@ const config = {
 			$icons: './node_modules/@lucide/svelte/dist/icons',
 			$ui: './src/lib/ui',
 		},
+		paths: {
+			relative: false, // Required for PostHog session replay to work correctly
+		},
 	},
 };
 

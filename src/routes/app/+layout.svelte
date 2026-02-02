@@ -1,11 +1,20 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
+
+	import posthog from 'posthog-js';
 
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
 	let dockItems = $derived(data.dock);
+
+	if (browser) {
+		beforeNavigate(() => posthog.capture('$pageleave'));
+		afterNavigate(() => posthog.capture('$pageview'));
+	}
 
 	function isActive(currentPath: string, targetHref: string): boolean {
 		return currentPath.startsWith(targetHref);
