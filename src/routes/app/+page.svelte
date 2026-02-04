@@ -1,27 +1,58 @@
 <script lang="ts">
-	import { goto, invalidate } from '$app/navigation';
 	import { resolve } from '$app/paths';
 
-	import { account } from '$appwrite/account';
+	import { Bell, Search } from '$icons';
 
-	import { Search } from '$icons';
+	import type { PageProps } from './$types';
 
-	import Heading from '$ui/components/typography/Heading.svelte';
-
-	import * as m from '$lib/paraglide/messages';
+	let { data }: PageProps = $props();
+	let promos = [
+		{ id: 0 },
+		{ id: 1 },
+		{ id: 2 },
+	];
 </script>
 
-<Heading>{m.routes_explore_heading()}</Heading>
+<div class="flex items-center gap-4">
+	<a href={resolve('/app/profile')} aria-label="View Profile" class="flex flex-1 items-center gap-4">
+		<div class="avatar">
+			<div class="flex w-12 items-center justify-center rounded-full bg-base-200">
+				<img alt="temp_avatar" src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
+			</div>
+		</div>
+		<div class="flex flex-col justify-center">
+			<p class="text-sm">Welcome,</p>
+			<p class="text-sm font-bold">{data.user.name}</p>
+		</div>
+	</a>
 
-<label class="input w-full">
-	<Search class="h-[1em] opacity-50" stroke="currentColor" />
-	<input type="search" class="w-full grow" placeholder="Search" />
-</label>
+	<a class="btn btn-circle" href={resolve('/app/notifications')} aria-label="Show Notifications">
+		<Bell class="size-5" />
+	</a>
+</div>
 
-<button
-	onclick={async () => {
-		await account.deleteSession({ sessionId: 'current' });
-		await invalidate('app:user');
-		await goto(resolve('/auth'));
-	}}>logout</button
+<a
+	href={resolve('/app/search')}
+	class="input-bordered input flex w-full cursor-pointer items-center gap-2 transition-colors hover:input-primary"
+	aria-label="Search Patterns"
 >
+	<Search class="mx-1 size-5 text-primary opacity-70" />
+
+	<span class="grow text-base-content/50"> Search patterns </span>
+</a>
+
+<section class="">
+	<div>
+		<p class="font-bold">Continue project</p>
+	</div>
+
+	<div class="carousel w-full carousel-center space-x-4 pt-4">
+		{#each promos as promo (promo.id)}
+			<div class="carousel-item min-h-40 w-[85%] md:w-[60%]">
+				<div class="card w-full overflow-visible bg-base-200">
+					<div class="relative card-body flex-row items-center p-6"></div>
+				</div>
+			</div>
+		{/each}
+	</div>
+</section>

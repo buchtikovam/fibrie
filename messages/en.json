@@ -1,7 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"components_dock_home": "Home",
-	"components_dock_library": "Your library",
+	"components_dock_library": "Library",
 	"components_dock_tools": "Tools",
 	"components_dock_burrow": "Burrow",
 	"components_dock_connect": "Connect",

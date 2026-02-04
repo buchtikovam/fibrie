@@ -16,13 +16,12 @@ export const ssr = false;
 export const prerender = true;
 
 export const load: LayoutLoad = async ({ parent }) => {
-	// Initialize PostHog on the client
 	if (browser) {
 		posthog.init(PUBLIC_POSTHOG_KEY, {
 			api_host: PUBLIC_POSTHOG_HOST,
 			capture_pageview: false,
 			capture_pageleave: false,
-			capture_exceptions: true, // Enable capturing exceptions using Error Tracking
+			capture_exceptions: true,
 		});
 	}
 

@@ -1,46 +1,37 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-
-	import posthog from 'posthog-js';
 
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
 	let dockItems = $derived(data.dock);
 
-	if (browser) {
-		beforeNavigate(() => posthog.capture('$pageleave'));
-		afterNavigate(() => posthog.capture('$pageview'));
-	}
-
 	function isActive(currentPath: string, targetHref: string): boolean {
-		return currentPath.startsWith(targetHref);
+		return currentPath === targetHref;
 	}
 </script>
 
-<main
-	class="relative flex min-h-0 flex-1 flex-col bg-base-100 p-6 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
->
-	{@render children?.()}@
-</main>
+<div class="relative flex h-full flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+	<main style="view-transition-name: content;" class="relative flex min-h-0 flex-1 flex-col gap-6 bg-base-100 p-6">
+		{@render children?.()}
+	</main>
 
-<div class="dock relative dock-md rounded-t-3xl border-t-0 pb-1">
-	{#each dockItems as item (item.id)}
-		{@const active = isActive(page.url.pathname, item.href)}
-		{@const Icon = item.icon}
+	<div class="dock relative dock-md rounded-t-3xl border-t-0">
+		{#each dockItems as item (item.id)}
+			{@const active = isActive(page.url.pathname, item.href)}
+			{@const Icon = item.icon}
 
-		<a
-			href={resolve(item.href)}
-			class:dock-active={active}
-			aria-label={item.label}
-			aria-current={active ? 'page' : undefined}
-			class={`${active ? 'text-primary ' : ''} `}
-		>
-			<Icon class="size-[1.2em]" stroke-linejoin="miter" stroke-linecap="butt" />
-			<span class="dock-label">{item.label}</span>
-		</a>
-	{/each}
+			<a
+				href={resolve(item.href)}
+				class:dock-active={active}
+				aria-label={item.label}
+				aria-current={active ? 'page' : undefined}
+				class={`${active ? 'text-primary ' : ''} `}
+			>
+				<Icon class="size-[1.2em] max-h-[1.2em]" />
+				<span class="dock-label">{item.label}</span>
+			</a>
+		{/each}
+	</div>
 </div>
