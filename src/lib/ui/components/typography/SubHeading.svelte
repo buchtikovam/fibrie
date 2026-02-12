@@ -8,4 +8,4 @@
 	let { children }: Props = $props();
 </script>
 
-<h1 class="text-xl font-semibold">{@render children?.()}</h1>
+<h3 class="text-lg font-semibold">{@render children?.()}</h3>

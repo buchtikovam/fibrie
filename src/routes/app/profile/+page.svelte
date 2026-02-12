@@ -1,22 +1,32 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	import { ArrowLeft, ChevronRight } from '$icons';
+	import { Bell, ChevronRight, LogOut, Settings, Star } from '$icons';
+
+	import Header from '$ui/blocks/Header.svelte';
+	import SubHeading from '$ui/components/typography/SubHeading.svelte';
+
+	import type { Component } from 'svelte';
 
 	import * as m from '$lib/paraglide/messages';
+
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+
+	interface NavigationItem {
+		title: string;
+		icon: Component;
+		href: string;
+		isPro?: boolean;
+	}
 </script>
 
-<div class="flex items-center">
-	<a href={resolve('/app')} class="btn btn-circle">
-		<ArrowLeft />
-	</a>
-
-	<h1 class="flex-1 text-center text-2xl font-bold">{m.routes_profile_heading()}</h1>
-
+<Header title={m.routes_profile_heading()}>
 	<button class="btn btn-circle">
-		<!--		<ArrowLeft></ArrowLeft>-->
+		<Bell class="size-5" />
 	</button>
-</div>
+</Header>
 
 <nav aria-label="Profile navigation" class="flex-1 overflow-y-auto">
 	<ul class="flex flex-col gap-2">
@@ -35,7 +45,7 @@
 				</div>
 
 				<div class="flex-1 flex-col items-start text-left">
-					<p class="text-lg font-semibold">Jane Doe</p>
+					<SubHeading>{data.user.name}</SubHeading>
 					<span class="text-sm font-normal text-base-content/70">
 						{m.routes_profile_nav_my_profile()}
 					</span>
@@ -50,11 +60,11 @@
 		<li>
 			<a
 				href={resolve('/app/premium')}
-				class="btn my-2 flex h-auto min-h-30 w-full flex-row items-center justify-between gap-4 p-6"
+				class="btn my-2 flex h-auto min-h-30 w-full flex-row items-center justify-between gap-4 p-6 btn-primary"
 			>
-				<div class="flex flex-1 flex-col items-start gap-2 text-left">
-					<p class="w-2/3 text-lg">Try premium</p>
-					<p class="w-2/3">Unlock all features and patterns with 14-day free trial</p>
+				<div class="flex w-2/3 flex-col items-start gap-2 text-left">
+					<SubHeading>Try premium</SubHeading>
+					<p>Unlock all features and patterns with 14-day free trial</p>
 				</div>
 
 				<div class="">
@@ -63,21 +73,61 @@
 			</a>
 		</li>
 
-		<!--<a href={item.href} class="btn btn-ghost h-auto w-full flex-row items-center justify-between gap-4 p-2 no-underline">-->
-		<!--	<div class="bg-secondary/20 flex size-12 items-center justify-center rounded-2xl">-->
-		<!--		{#if item.icon}-->
-		<!--			{@const Icon = item.icon}-->
-		<!--			<Icon class="size-6" />-->
-		<!--		{/if}-->
-		<!--	</div>-->
+		<li class="mt-3 flex flex-col gap-3 overflow-auto">
+			{@render navigationItem({
+				href: resolve('/app/profile/preferences'),
+				title: 'Preferences',
+				isPro: false,
+				icon: Star,
+			})}
 
-		<!--	<span class="flex-1 flex-col items-start text-left text-lg font-semibold">-->
-		<!--		{item.label}-->
-		<!--	</span>-->
+			{@render separator()}
+			{@render navigationItem({
+				href: resolve('/app/profile/settings'),
+				title: 'Settings',
+				isPro: false,
+				icon: Settings,
+			})}
 
-		<!--	<div class="text-base-content/50">-->
-		<!--		<ChevronRight strokeWidth="3" />-->
-		<!--	</div>-->
-		<!--</a>-->
+			{@render separator()}
+			{@render navigationItem({
+				href: resolve('/auth/logout'),
+				title: 'Log out',
+				isPro: false,
+				icon: LogOut,
+			})}
+		</li>
 	</ul>
 </nav>
+
+{#snippet navigationItem(item: NavigationItem)}
+	<a href={item.href} class="group flex items-center justify-between transition-all active:scale-95">
+		<div class="flex flex-1 items-center gap-4">
+			<div
+				class="flex size-12 items-center justify-center rounded-2xl bg-base-200 text-base-content transition-colors group-hover:bg-white"
+			>
+				{#if item.icon}
+					{@const Icon = item.icon}
+					<Icon size={22} strokeWidth={2} />
+				{/if}
+			</div>
+
+			<div class="flex w-full flex-1 items-center gap-3 pr-4">
+				<span class="flex-1 text-lg font-semibold">{item.title}</span>
+
+				{#if item.isPro}
+					<span class="badge badge-secondary">Pro</span>
+				{/if}
+			</div>
+		</div>
+
+		<ChevronRight
+			class="text-base-content/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-base-content"
+			size={24}
+		/>
+	</a>
+{/snippet}
+
+{#snippet separator()}
+	<div class="h-0.5 w-full bg-base-200"></div>
+{/snippet}

@@ -1,8 +1,13 @@
 <script>
+	import { RotateCcw } from '$icons';
+
+	import Header from '$ui/blocks/Header.svelte';
+
 	import * as m from '$lib/paraglide/messages.js';
-	import Heading from '$lib/ui/components/typography/Heading.svelte';
 </script>
 
-<header class="flex-none">
-	<Heading>{m.routes_profile_preferences_heading()}</Heading>
-</header>
+<Header title={m.routes_profile_preferences_heading()}>
+	<button class="btn btn-circle">
+		<RotateCcw class="size-5" />
+	</button>
+</Header>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	import { Bell, Search } from '$icons';
+	import { Mail, Search } from '$icons';
 
 	import type { PageProps } from './$types';
 
@@ -16,7 +16,7 @@
 <div class="flex items-center gap-4">
 	<a href={resolve('/app/profile')} aria-label="View Profile" class="flex flex-1 items-center gap-4">
 		<div class="avatar">
-			<div class="flex w-12 items-center justify-center rounded-full bg-base-200">
+			<div class="flex w-10 items-center justify-center rounded-full bg-base-200">
 				<img alt="temp_avatar" src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
 			</div>
 		</div>
@@ -26,8 +26,8 @@
 		</div>
 	</a>
 
-	<a class="btn btn-circle" href={resolve('/app/notifications')} aria-label="Show Notifications">
-		<Bell class="size-5" />
+	<a class="btn btn-circle" href={resolve('/app/mail')} aria-label="Show Mail">
+		<Mail class="size-5" />
 	</a>
 </div>
 

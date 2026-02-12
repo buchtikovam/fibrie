@@ -7,10 +7,10 @@
 	import { ChevronLeft } from '$icons';
 
 	import { getLocale } from '$lib/paraglide/runtime';
-	import SelectionCard from '$lib/ui/components/cards/SelectionCard.svelte';
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 
+	import SelectionCard from '../../app/profile/(todo)/cards/SelectionCard.svelte';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
@@ -64,7 +64,7 @@
 </script>
 
 <div
-	class="flex h-dvh w-full flex-col overflow-hidden bg-primary/10 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
+	class="flex h-dvh w-full flex-col overflow-hidden bg-primary/25 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
 >
 	<div class="mx-auto w-full max-w-lg flex-none px-6 pt-4 sm:pt-6">
 		<div class="flex items-center gap-4">

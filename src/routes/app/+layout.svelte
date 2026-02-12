@@ -27,7 +27,7 @@
 				class:dock-active={active}
 				aria-label={item.label}
 				aria-current={active ? 'page' : undefined}
-				class={`${active ? 'text-primary ' : ''} `}
+				class={['text-base-content', '[&.dock-active::after]:text-primary']}
 			>
 				<Icon class="size-[1.2em] max-h-[1.2em]" />
 				<span class="dock-label">{item.label}</span>

@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 @plugin 'daisyui' {
-	themes: autumn --default;
+	themes: pastel --default;
 }
 
 * {
@@ -18,12 +18,49 @@
 }
 
 @layer base {
+	:global(::view-transition-group(root)) {
+		animation: none;
+	}
+
+	:global(::view-transition-old(content)) {
+		animation: 150ms ease-in both fade-out;
+	}
+
+	:global(::view-transition-new(content)) {
+		animation:
+			300ms ease-out both fade-in,
+			300ms cubic-bezier(0.2, 0, 0, 1) both slide-micro;
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-micro {
+		from {
+			transform: translateY(8px);
+		}
+	}
+
 	input:-webkit-autofill,
 	input:-webkit-autofill:hover,
 	input:-webkit-autofill:focus {
-		-webkit-box-shadow: 0 0 0 1000px theme('colors.base-100') inset !important;
+		/*-webkit-box-shadow: 0 0 0 1000px theme('colors.base-100') inset !important;*/
 		-webkit-text-fill-color: theme('colors.base-content') !important;
 		transition: background-color 5000s ease-in-out 0s;
 		border-radius: inherit;
+	}
+
+	input:focus {
+		outline: none !important;
+		box-shadow: none !important;
 	}
 }

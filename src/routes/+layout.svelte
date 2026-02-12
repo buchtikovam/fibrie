@@ -3,6 +3,7 @@
 	import { afterNavigate, beforeNavigate, onNavigate } from '$app/navigation';
 
 	import favicon from '$lib/assets/favicon.svg';
+	import { App } from '@capacitor/app';
 	import { SystemBarType, SystemBars } from '@capacitor/core';
 	import posthog from 'posthog-js';
 	import { onMount } from 'svelte';
@@ -18,11 +19,20 @@
 	}
 
 	onMount(() => {
-		(async () => {
-			await SystemBars.hide({
-				bar: SystemBarType.NavigationBar,
-			});
-		})();
+		// Capacitor back navigation
+		const backListener = App.addListener('backButton', () => {
+			history.back();
+		});
+
+		// Hide bottom navigation bar
+		SystemBars.hide({
+			bar: SystemBarType.NavigationBar,
+		});
+
+		// Cleanup prevents memory leaks if layout ever unmounts (rare but safe)
+		return () => {
+			backListener.then((handle) => handle.remove());
+		};
 	});
 
 	onNavigate((navigation) => {
@@ -42,39 +52,3 @@
 <div class="flex h-dvh w-full flex-col">
 	{@render children?.()}
 </div>
-
-<style>
-	/* 🛑 STOP the global root animation */
-	:global(::view-transition-group(root)) {
-		animation: none;
-	}
-
-	/* ✨ Apply the "Whisper" animation ONLY to the 'content' name */
-	:global(::view-transition-old(content)) {
-		animation: 150ms ease-in both fade-out;
-	}
-
-	:global(::view-transition-new(content)) {
-		animation:
-			300ms ease-out both fade-in,
-			300ms cubic-bezier(0.2, 0, 0, 1) both slide-micro;
-	}
-
-	@keyframes fade-in {
-		from {
-			opacity: 0;
-		}
-	}
-
-	@keyframes fade-out {
-		to {
-			opacity: 0;
-		}
-	}
-
-	@keyframes slide-micro {
-		from {
-			transform: translateY(8px);
-		}
-	}
-</style>

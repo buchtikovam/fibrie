@@ -38,7 +38,7 @@
 
 <label
 	class="flex cursor-pointer items-center justify-between rounded-2xl border border-base-300 bg-base-100 p-4 transition-all active:scale-[0.98]
-    {isChecked ? 'border-primary bg-primary/5' : ''}"
+    {isChecked ? 'border-primary ' : ''}"
 >
 	<span class="flex items-center gap-4">
 		{#if icon}

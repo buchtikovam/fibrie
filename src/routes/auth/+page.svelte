@@ -121,7 +121,7 @@
 	}
 </script>
 
-<div class="flex h-full w-full flex-col items-center justify-center bg-primary/10 p-6">
+<div class="flex h-full w-full flex-col items-center justify-center bg-primary/25 p-6">
 	<div class="card w-full max-w-sm bg-base-100">
 		<form
 			onsubmit={(e) => {
