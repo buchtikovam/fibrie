@@ -1,5 +1,7 @@
+import type { FibriePrefs } from '$lib/types/user';
+
 export interface PreferenceStep {
-	id: keyof Appwrite.Preferences;
+	id: keyof FibriePrefs;
 	header: string;
 	mode: 'single' | 'multiple';
 	options: {

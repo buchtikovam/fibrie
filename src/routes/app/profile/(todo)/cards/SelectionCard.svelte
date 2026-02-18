@@ -37,12 +37,12 @@
 </script>
 
 <label
-	class="flex cursor-pointer items-center justify-between rounded-2xl border border-base-300 bg-base-100 p-4 transition-all active:scale-[0.98]
+	class="flex cursor-pointer items-center justify-between rounded-2xl border-2 border-primary bg-base-100 p-4 transition-all active:scale-[0.98]
     {isChecked ? 'border-primary ' : ''}"
 >
 	<span class="flex items-center gap-4">
 		{#if icon}
-			<div class="flex h-12 w-12 min-w-12 items-center justify-center rounded-2xl bg-base-100 text-2xl">
+			<div class="flex h-12 w-12 min-w-12 items-center justify-center rounded-2xl bg-secondary/30 text-2xl">
 				{icon}
 			</div>
 		{/if}

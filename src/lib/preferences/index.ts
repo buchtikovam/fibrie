@@ -1,3 +1,5 @@
+import type { FibriePrefs } from '$lib/types/user';
+
 import { Preferences } from '@capacitor/preferences';
 
 function structure<T>(key: string) {
@@ -30,6 +32,6 @@ function structure<T>(key: string) {
 
 export const preferences = {
 	boarded: structure<string>('boarded'),
-	prefs: structure<Appwrite.Preferences>('preferences'),
+	prefs: structure<Partial<FibriePrefs>>('preferences'),
 	session: structure(<string>'session'),
 };
