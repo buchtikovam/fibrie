@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto, invalidate } from '$app/navigation';
 	import { resolve } from '$app/paths';
+
+	import { account } from '$appwrite/account';
 
 	import { preferences } from '$preferences';
 
@@ -77,7 +79,7 @@
 		answers.onboardingComplete = true;
 		await preferences.boarded.set('true');
 		await preferences.prefs.set(answers);
-		goto(resolve('/auth'));
+		await goto(resolve('/auth'));
 	}
 </script>
 

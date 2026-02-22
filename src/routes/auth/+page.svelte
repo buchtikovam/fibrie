@@ -83,7 +83,7 @@
 				failure: new URL('auth/callback/failure', page.url).href,
 			});
 		} catch (error: unknown) {
-			alert(error);
+			console.error(error);
 		}
 	}
 
@@ -94,9 +94,8 @@
 			token = await account.createEmailToken({ userId: ID.unique(), email });
 			startCooldown();
 		} catch (error: unknown) {
-			alert(error);
-			// 	console.error(helper.error.toString(error));
-			// 	return;
+			console.error(helper.error.toString(error));
+			return;
 		}
 	}
 
@@ -105,7 +104,6 @@
 
 		try {
 			await account.createSession({ userId: token.userId, secret });
-
 			const prefs: Partial<typeof preferences.prefs.get> | null = await preferences.prefs.get();
 			if (prefs) {
 				await account.updatePrefs({ prefs });
@@ -121,8 +119,8 @@
 	}
 </script>
 
-<div class="flex h-full w-full flex-col items-center justify-center bg-primary/25 p-6">
-	<div class="card w-full max-w-sm bg-base-100">
+<div class="flex h-full w-full flex-col items-center justify-center bg-base-200 p-6">
+	<div class="card w-full max-w-sm border-2 border-primary bg-base-100">
 		<form
 			onsubmit={(e) => {
 				e.preventDefault();

@@ -7,7 +7,7 @@
 </script>
 
 <div class="my-4 flex items-center gap-4">
-	<div class="h-px w-full bg-secondary"></div>
-	<p class="text-secondary">{label}</p>
-	<div class="h-px w-full bg-secondary"></div>
+	<div class="h-0.5 w-full bg-secondary"></div>
+	<p class="font-bold text-secondary">{label}</p>
+	<div class="h-0.5 w-full bg-secondary"></div>
 </div>

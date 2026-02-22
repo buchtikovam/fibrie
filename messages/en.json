@@ -58,7 +58,7 @@
 	"routes_onboarding_preferences_companion_title": "Most importantly...",
 	"routes_onboarding_preferences_companion_description": "How would you like to name your new <b>companion</b>?",
 
-	"routes_auth_heading": "Welcome to Fibrie",
+	"routes_auth_heading": "Welcome",
 	"routes_auth_oauth_button_apple": "Log in with Apple",
 	"routes_auth_oauth_button_google": "Log in with Google",
 	"routes_auth_line_separator_label": "OR",
