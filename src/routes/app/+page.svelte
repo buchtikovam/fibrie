@@ -21,12 +21,12 @@
 			</div>
 		</div>
 		<div class="flex flex-col justify-center">
-			<p class="text-sm">Welcome,</p>
-			<p class="text-sm font-bold">{data.user.name}</p>
+			<p class="text-md leading-tight">Welcome,</p>
+			<p class="text-md leading-tight font-bold">{data.user.name}</p>
 		</div>
 	</a>
 
-	<a class="btn btn-circle" href={resolve('/app/mail')} aria-label="Show Mail">
+	<a class="btn btn-circle bg-base-300" href={resolve('/app/mail')} aria-label="Show Mail">
 		<Mail class="size-5" />
 	</a>
 </div>

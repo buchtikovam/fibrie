@@ -1,6 +1,5 @@
 <script lang="ts">
 	import BackButton from '$ui/components/buttons/BackButton.svelte';
-	import Heading from '$ui/components/typography/Heading.svelte';
 
 	import type { Snippet } from 'svelte';
 
@@ -15,7 +14,7 @@
 <div class="flex items-center">
 	<BackButton />
 
-	<Heading>{title}</Heading>
+	<h1 class="flex-1 text-center text-2xl font-bold">{title}</h1>
 
 	{@render children?.()}
 </div>

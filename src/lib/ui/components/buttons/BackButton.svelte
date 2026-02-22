@@ -16,6 +16,6 @@
 	}
 </script>
 
-<button class="btn btn-circle" onclick={handleBack} aria-label="Go back">
+<button class="btn btn-circle bg-base-300" onclick={handleBack} aria-label="Go back">
 	<ArrowLeft class="size-5" />
 </button>

@@ -1,133 +1,74 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	import { Bell, ChevronRight, LogOut, Settings, Star } from '$icons';
+	import { Bell } from '$icons';
 
 	import Header from '$ui/blocks/Header.svelte';
-	import SubHeading from '$ui/components/typography/SubHeading.svelte';
-
-	import type { Component } from 'svelte';
+	import VerticalSeparator from '$ui/components/separators/VerticalSeparator.svelte';
 
 	import * as m from '$lib/paraglide/messages';
 
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-
-	interface NavigationItem {
-		title: string;
-		icon: Component;
-		href: string;
-		isPro?: boolean;
-	}
 </script>
 
 <Header title={m.routes_profile_heading()}>
-	<button class="btn btn-circle">
+	<button class="btn btn-circle bg-base-300">
 		<Bell class="size-5" />
 	</button>
 </Header>
 
-<nav aria-label="Profile navigation" class="flex-1 overflow-y-auto">
-	<ul class="flex flex-col gap-2">
-		<li>
-			<a
-				href={resolve('/app/profile/my-profile')}
-				class="btn h-auto min-h-20 w-full flex-row items-center justify-between gap-4 p-2 no-underline btn-ghost"
-			>
-				<div class="avatar">
-					<div class="w-16 rounded-full">
-						<img
-							alt="profile_picture"
-							src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"
-						/>
-					</div>
-				</div>
-
-				<div class="flex-1 flex-col items-start text-left">
-					<SubHeading>{data.user.name}</SubHeading>
-					<span class="text-sm font-normal text-base-content/70">
-						{m.routes_profile_nav_my_profile()}
-					</span>
-				</div>
-
-				<div class="text-base-content/50">
-					<ChevronRight strokeWidth="3" />
-				</div>
-			</a>
-		</li>
-
-		<li>
-			<a
-				href={resolve('/app/premium')}
-				class="btn my-2 flex h-auto min-h-30 w-full flex-row items-center justify-between gap-4 p-6 btn-primary"
-			>
-				<div class="flex w-2/3 flex-col items-start gap-2 text-left">
-					<SubHeading>Try premium</SubHeading>
-					<p>Unlock all features and patterns with 14-day free trial</p>
-				</div>
-
-				<div class="">
-					<ChevronRight strokeWidth="3" />
-				</div>
-			</a>
-		</li>
-
-		<li class="mt-3 flex flex-col gap-3 overflow-auto">
-			{@render navigationItem({
-				href: resolve('/app/profile/preferences'),
-				title: 'Preferences',
-				isPro: false,
-				icon: Star,
-			})}
-
-			{@render separator()}
-			{@render navigationItem({
-				href: resolve('/app/profile/settings'),
-				title: 'Settings',
-				isPro: false,
-				icon: Settings,
-			})}
-
-			{@render separator()}
-			{@render navigationItem({
-				href: resolve('/auth/logout'),
-				title: 'Log out',
-				isPro: false,
-				icon: LogOut,
-			})}
-		</li>
-	</ul>
-</nav>
-
-{#snippet navigationItem(item: NavigationItem)}
-	<a href={item.href} class="group flex items-center justify-between transition-all active:scale-95">
-		<div class="flex flex-1 items-center gap-4">
-			<div
-				class="flex size-12 items-center justify-center rounded-2xl bg-base-200 text-base-content transition-colors group-hover:bg-white"
-			>
-				{#if item.icon}
-					{@const Icon = item.icon}
-					<Icon size={22} strokeWidth={2} />
-				{/if}
-			</div>
-
-			<div class="flex w-full flex-1 items-center gap-3 pr-4">
-				<span class="flex-1 text-lg font-semibold">{item.title}</span>
-
-				{#if item.isPro}
-					<span class="badge badge-secondary">Pro</span>
-				{/if}
+<div class="flex flex-col gap-3 rounded-xl border-2 border-base-300 bg-base-100 p-3">
+	<a href={resolve('/app/profile/my-profile')} class="flex flex-row items-center gap-4">
+		<div class="avatar">
+			<div class="w-16 rounded-full">
+				<img alt="profile_picture" src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />
 			</div>
 		</div>
 
-		<ChevronRight
-			class="text-base-content/30 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-base-content"
-			size={24}
-		/>
+		<div class="flex-1 items-start gap-0 text-left">
+			<p class="text-lg font-bold">{data.user.name}</p>
+			<span class="text-sm font-normal text-base-content/70"> Free account </span>
+		</div>
 	</a>
-{/snippet}
 
-{#snippet separator()}
-	<div class="h-0.5 w-full bg-base-200"></div>
-{/snippet}
+	<div class="flex w-full items-center justify-between rounded-xl bg-primary p-3">
+		<div class="flex flex-1 flex-col items-center text-primary-content">
+			<p class="font-bold">12</p>
+			<p class="text-sm">Projects</p>
+		</div>
+
+		<VerticalSeparator />
+
+		<div class="flex flex-1 flex-col items-center text-primary-content">
+			<p class="font-bold">125k</p>
+			<p class="text-sm">Stitches</p>
+		</div>
+
+		<VerticalSeparator />
+
+		<div class="flex flex-1 flex-col items-center text-primary-content">
+			<p class="font-bold">684</p>
+			<p class="text-sm">Minutes</p>
+		</div>
+	</div>
+</div>
+
+<div>
+	<p class="pb-1.5 font-bold">Account Settings</p>
+
+	<div class="h-20 rounded-2xl border-2 border-base-300 bg-base-100 p-3"></div>
+</div>
+
+<div>
+	<p class="pb-2 font-bold">Preferences</p>
+
+	<div class="h-40 rounded-2xl border-2 border-base-300 bg-base-100 p-3"></div>
+</div>
+
+<div>
+	<p class="pb-2 font-bold">App</p>
+
+	<div class="rounded-2xl border-2 border-base-300 bg-base-100 p-3">fsdfdsf</div>
+</div>

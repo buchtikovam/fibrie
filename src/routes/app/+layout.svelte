@@ -12,12 +12,12 @@
 	}
 </script>
 
-<div class="relative flex h-full flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
-	<main style="view-transition-name: content;" class="relative flex min-h-0 flex-1 flex-col gap-6 bg-base-100 p-6">
+<div class="relative flex h-full flex-col bg-base-200 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+	<main style="view-transition-name: content;" class="relative flex min-h-0 flex-1 flex-col gap-6 bg-base-200 p-6">
 		{@render children?.()}
 	</main>
 
-	<div class="dock relative dock-md rounded-t-3xl border-t-0">
+	<div class="dock relative dock-md rounded-t-3xl border-t-0 bg-base-200">
 		{#each dockItems as item (item.id)}
 			{@const active = isActive(page.url.pathname, item.href)}
 			{@const Icon = item.icon}
