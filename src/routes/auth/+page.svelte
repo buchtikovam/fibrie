@@ -8,7 +8,7 @@
 
 	import { preferences } from '$preferences';
 
-	import LineSeparator from '$ui/components/separators/LineSeparator.svelte';
+	import LineTextSeparator from '$ui/components/separators/LineTextSeparator.svelte';
 	import AppleIcon from '$ui/icons/AppleIcon.svelte';
 	import GoogleIcon from '$ui/icons/GoogleIcon.svelte';
 
@@ -152,7 +152,7 @@
 				{m.routes_auth_oauth_button_google()}
 			</button>
 
-			<LineSeparator label={m.routes_auth_line_separator_label()} />
+			<LineTextSeparator label={m.routes_auth_line_separator_label()} />
 
 			{#if !token}
 				<fieldset class="fieldset">

@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { goto, invalidate } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
-
-	import { account } from '$appwrite/account';
 
 	import { preferences } from '$preferences';
 

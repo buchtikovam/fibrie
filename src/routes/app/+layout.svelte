@@ -13,7 +13,10 @@
 </script>
 
 <div class="relative flex h-full flex-col bg-base-200 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
-	<main style="view-transition-name: content;" class="relative flex min-h-0 flex-1 flex-col gap-6 bg-base-200 p-6">
+	<main
+		style="view-transition-name: content;"
+		class="relative flex min-h-0 flex-1 flex-col overflow-auto bg-base-200"
+	>
 		{@render children?.()}
 	</main>
 

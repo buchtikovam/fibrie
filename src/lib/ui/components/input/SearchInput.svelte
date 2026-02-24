@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Search, X } from '$icons';
 
-	import { onMount } from 'svelte';
-
 	let {
 		value = $bindable(''),
 		placeholder = 'Search...',
