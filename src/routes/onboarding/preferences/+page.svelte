@@ -334,7 +334,7 @@
 		{/key}
 	</div>
 
-	<div class="mx-auto w-full max-w-lg flex-none px-6 py-4">
+	<div class="mx-auto w-full max-w-lg flex-none p-6">
 		<button
 			class="btn w-full rounded-full transition-all btn-lg btn-primary"
 			onclick={handleNext}

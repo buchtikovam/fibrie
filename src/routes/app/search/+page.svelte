@@ -5,7 +5,7 @@
 	let searchValue = $state<string>('');
 </script>
 
-<div class="flex items-center gap-4">
+<div class="flex items-center gap-4 p-6">
 	<BackButton />
 
 	<SearchInput bind:value={searchValue} />

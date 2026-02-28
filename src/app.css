@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/typography';
 
 @plugin 'daisyui' {
-	themes: pastel --default;
+	themes: light --default;
 }
 
 * {

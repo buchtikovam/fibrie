@@ -2,6 +2,8 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 
+	import { ui } from '$lib/state/ui.svelte';
+
 	import type { LayoutProps } from './$types';
 
 	let { children, data }: LayoutProps = $props();
@@ -20,21 +22,23 @@
 		{@render children?.()}
 	</main>
 
-	<div class="dock relative dock-md rounded-t-3xl border-t-0 bg-base-200">
-		{#each dockItems as item (item.id)}
-			{@const active = isActive(page.url.pathname, item.href)}
-			{@const Icon = item.icon}
+	{#if ui.showDock}
+		<div class="dock relative dock-md rounded-t-3xl border-t-0 bg-base-200">
+			{#each dockItems as item (item.id)}
+				{@const active = isActive(page.url.pathname, item.href)}
+				{@const Icon = item.icon}
 
-			<a
-				href={resolve(item.href)}
-				class:dock-active={active}
-				aria-label={item.label}
-				aria-current={active ? 'page' : undefined}
-				class={['text-base-content', '[&.dock-active::after]:text-primary']}
-			>
-				<Icon class="size-[1.2em] max-h-[1.2em]" />
-				<span class="dock-label">{item.label}</span>
-			</a>
-		{/each}
-	</div>
+				<a
+					href={resolve(item.href)}
+					class:dock-active={active}
+					aria-label={item.label}
+					aria-current={active ? 'page' : undefined}
+					class={['text-base-content', '[&.dock-active::after]:text-primary']}
+				>
+					<Icon class="size-[1.2em] max-h-[1.2em]" />
+					<span class="dock-label">{item.label}</span>
+				</a>
+			{/each}
+		</div>
+	{/if}
 </div>
