@@ -12,7 +12,7 @@
 </script>
 
 <header
-	class="sticky top-0 z-50 flex h-22 shrink-0 items-center bg-base-200/90 px-6 backdrop-blur supports-backdrop-filter:bg-base-200/60"
+	class="sticky top-0 z-50 flex h-22 shrink-0 items-center bg-base-200 px-6 backdrop-blur supports-backdrop-filter:bg-base-100/60"
 >
 	<BackButton />
 

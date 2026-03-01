@@ -33,14 +33,14 @@
 </script>
 
 <Header title={m.routes_profile_heading()}>
-	<button class="btn btn-circle bg-base-300">
+	<button class="btn btn-circle">
 		<Bell class="size-5" />
 	</button>
 </Header>
 
 <div class="flex flex-col gap-6 px-6 pt-0 pb-6">
-	<div class="flex flex-col gap-3 rounded-xl border-2 border-base-300 bg-base-100 p-3">
-		<a href={resolve('/app/profile/my-profile')} class="flex flex-row items-center gap-4">
+	<div class="flex flex-col gap-3 rounded-xl border-2 border-base-200 bg-base-100 p-3">
+		<a href={resolve('/app/profile/me')} class="flex flex-row items-center gap-4">
 			<div class="avatar">
 				<div class="w-16 rounded-full">
 					<img alt="profile_picture" src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp" />

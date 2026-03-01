@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	import { Mail, Search } from '$icons';
+	import { Mail } from '$icons';
 
 	import type { PageProps } from './$types';
 
@@ -22,20 +22,10 @@
 			</div>
 		</a>
 
-		<a class="btn btn-circle bg-base-300" href={resolve('/app/mail')} aria-label="Show Mail">
+		<a class="btn btn-circle" href={resolve('/app/mail')} aria-label="Show Mail">
 			<Mail class="size-5" />
 		</a>
 	</div>
 
-	<a
-		href={resolve('/app/search')}
-		class="input-bordered input flex w-full cursor-pointer items-center gap-2 transition-colors hover:input-primary"
-		aria-label="Search Patterns"
-	>
-		<Search class="mx-1 size-4 text-base-content/50" />
-
-		<span class="grow text-base-content/50"> Search patterns </span>
-	</a>
-
-	<a href={resolve('/app/patterns/123')}>patterns</a>
+	<a href={resolve('/app/patterns/69a47aa60014b7c6813b')}>patterns</a>
 </div>

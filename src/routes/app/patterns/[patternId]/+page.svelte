@@ -2,11 +2,16 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 
-	import { Bookmark, ChevronLeft, Play, Share } from '$icons';
+	import { Bookmark, ChevronLeft, Share } from '$icons';
+
+	import BackButton from '$ui/components/buttons/BackButton.svelte';
 
 	import { ui } from '$lib/state/ui.svelte';
 
-	// 🛡️ Strict Appwrite Interfaces
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+
 	interface Ingredient {
 		id: string;
 		name: string;
@@ -15,8 +20,9 @@
 
 	interface Pattern {
 		$id: string;
+		profileId: string;
 		title: string;
-		patternType: string;
+		profile: string;
 		prepTime: number;
 		difficulty: string;
 		rating: number;
@@ -26,43 +32,19 @@
 		ingredients: Ingredient[];
 	}
 
-	let pattern = $state<Pattern>({
-		$id: 'mock-pumpkin-123',
-		title: 'Ribbed winter beanie',
-		patternType: 'Fibrie Developer',
-		prepTime: 3,
-		difficulty: 'Beginner',
-		rating: 4.7,
-		reviews: 18,
-		imageIds: ['appwrite-file-789', 'appwrite-file-790'],
-		imageUrls: [
-			'https://i.etsystatic.com/62155956/r/il/c4b6e8/7454391134/il_1588xN.7454391134_1kmm.jpg',
-			'https://i.etsystatic.com/62155956/r/il/6cf577/7502323305/il_1588xN.7502323305_qpvj.jpg',
-			'https://i.etsystatic.com/62155956/r/il/9a133c/7502331293/il_1588xN.7502331293_r54d.jpg',
-		],
-		ingredients: [
-			{ id: 'ing-1', name: 'Pumpkin', weight: 1200 },
-			{ id: 'ing-2', name: 'Heavy Cream', weight: 200 },
-			{ id: 'ing-3', name: 'Vegetable Broth', weight: 500 },
-			{ id: 'ing-4', name: 'Garlic Cloves', weight: 15 },
-		],
-	});
+	let pattern = $derived<Pattern>(data.pattern);
 
-	// ✨ UI States
 	let activeTab = $state<'materials' | 'parts' | 'about'>('materials');
 	let servings = $state(4);
 
 	let currentImageIndex = $state(0);
-	let carouselRef = $state<HTMLElement | null>(null); // 🏗️ Typed DOM reference
+	let carouselRef = $state<HTMLElement | null>(null);
 
-	// 💅 Native-feeling CSS scroll tracking!
 	function handleCarouselScroll(e: Event & { currentTarget: HTMLElement }) {
 		const target = e.currentTarget;
-		// Calculate which image is fully in view based on scroll position
 		currentImageIndex = Math.round(target.scrollLeft / target.clientWidth);
 	}
 
-	// 🐰 Programmatic scrolling when a dot is clicked
 	function jumpToImage(index: number) {
 		if (!carouselRef) return;
 		currentImageIndex = index;
@@ -72,19 +54,12 @@
 		});
 	}
 
-	// 🏗️ DOM References for vertical scroll tracking
 	let mainScrollRef = $state<HTMLElement | null>(null);
 	let drawerRef = $state<HTMLElement | null>(null);
-
-	// ✨ UI State for dynamic border radius
 	let isDrawerAtTop = $state(false);
 
-	// 💅 High-performance scroll tracking (no $effects harmed!)
 	function handleVerticalScroll() {
 		if (!mainScrollRef || !drawerRef) return;
-
-		// If our scroll position is greater than or equal to the drawer's starting point, we flatten!
-		// We subtract a tiny buffer (like 2px) to prevent flickering when it snaps.
 		isDrawerAtTop = mainScrollRef.scrollTop >= drawerRef.offsetTop - 2;
 	}
 
@@ -124,9 +99,8 @@
 		></div>
 
 		<nav class="relative z-10 flex items-center justify-between">
-			<button onclick={() => goto(resolve('/app'))} class="btn btn-circle bg-base-300/60">
-				<ChevronLeft class="size-6" />
-			</button>
+			<BackButton classes="bg-base-300/60" />
+
 			<div class="flex items-center gap-3">
 				<button class="btn btn-circle bg-base-300/60">
 					<Share class="size-5" />
@@ -140,7 +114,7 @@
 
 		{#if pattern.imageUrls.length > 1}
 			<div
-				class="relative z-10 mx-auto mb-10 flex items-center gap-2 rounded-full border-2 border-base-100 bg-base-300/60 px-4 py-2"
+				class="relative z-10 mx-auto mb-10 flex items-center gap-2 rounded-full border border-base-100 bg-base-300/60 px-4 py-2"
 			>
 				{#each pattern.imageUrls as _, i (_)}
 					<button
@@ -169,8 +143,12 @@
 			<header class="mb-8 text-center">
 				<h1 class="mb-1 text-2xl font-bold text-base-content">{pattern.title}</h1>
 				<p class="mb-4 text-sm text-base-content/60">
-					Pattern by: <span class="underline">{pattern.patternType}</span>
+					Pattern by:
+					<a href={resolve(`/app/profiles/${pattern.profileId}`)} class="link">
+						{pattern.profile}
+					</a>
 				</p>
+
 				<div class="flex items-center justify-center gap-3 text-sm text-base-content/70">
 					<span>{pattern.prepTime} hours</span>
 					<span class="text-base-300">|</span>
@@ -178,9 +156,9 @@
 					<span class="text-base-300">|</span>
 					<span class="flex items-center gap-1 font-medium">
 						⭐ {pattern.rating}
-						<span class="text-xs font-normal underline opacity-60">
+						<a href={resolve(`/app/patterns/${pattern.$id}/reviews`)} class="link text-xs font-normal">
 							({pattern.reviews} reviews)
-						</span>
+						</a>
 					</span>
 				</div>
 			</header>
@@ -218,8 +196,5 @@
 </main>
 
 <div class="fixed right-6 bottom-6 left-6 z-50 transition-all duration-300 ease-in-out">
-	<button class="btn w-full rounded-full btn-lg btn-primary">
-		<Play size={18} strokeWidth="3" />
-		Start project
-	</button>
+	<button class="btn w-full rounded-full btn-lg btn-primary"> Start project </button>
 </div>

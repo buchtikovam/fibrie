@@ -4,6 +4,12 @@
 
 	import { ArrowLeft } from '$icons';
 
+	interface Props {
+		classes?: string;
+	}
+
+	let { classes }: Props = $props();
+
 	function handleBack() {
 		const historyState = window.history.state as Record<string, any> | null;
 		const appHistoryIndex = historyState?.['svelte-kit-index'] ?? 0;
@@ -16,6 +22,6 @@
 	}
 </script>
 
-<button class="btn btn-circle bg-base-300" onclick={handleBack} aria-label="Go back">
+<button class="btn btn-circle {classes}" onclick={handleBack} aria-label="Go back">
 	<ArrowLeft class="size-5" />
 </button>
