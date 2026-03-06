@@ -1,5 +1,5 @@
 <script lang="ts">
-	import BackButton from '$ui/components/buttons/BackButton.svelte';
+	import BackButton from '$ui/components/button/BackButton.svelte';
 	import SearchInput from '$ui/components/input/SearchInput.svelte';
 
 	let searchValue = $state<string>('');

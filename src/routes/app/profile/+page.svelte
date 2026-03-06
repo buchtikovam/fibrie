@@ -22,8 +22,8 @@
 	} from '$icons';
 
 	import Header from '$ui/blocks/Header.svelte';
-	import NavCardSmall from '$ui/components/cards/NavCardSmall.svelte';
-	import VerticalSeparator from '$ui/components/separators/VerticalSeparator.svelte';
+	import NavCardSmall from '$ui/components/card/NavCardSmall.svelte';
+	import VerticalSeparator from '$ui/components/separator/VerticalSeparator.svelte';
 
 	import * as m from '$lib/paraglide/messages';
 

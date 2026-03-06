@@ -4,20 +4,14 @@ import { browser } from '$app/environment';
 
 import { account } from '$appwrite/account';
 
-import posthog from 'posthog-js';
+import type { FibriePrefs } from '$lib/types/user';
 
-// import { setLocale } from '$lib/paraglide/runtime';
-// import { Device } from '@capacitor/device';
+import posthog from 'posthog-js';
 
 import type { LayoutLoad } from './$types';
 
 export const ssr = false;
 export const prerender = true;
-
-// function isValidLocale(lang: string): lang is Appwrite.AppPreferences['language'] {
-// 	const supported = ['cs', 'sk', 'en', 'es', 'fr', 'de'];
-// 	return supported.includes(lang);
-// }
 
 export const load: LayoutLoad = async ({ depends }) => {
 	if (browser) {
@@ -25,14 +19,14 @@ export const load: LayoutLoad = async ({ depends }) => {
 			api_host: PUBLIC_POSTHOG_HOST,
 			capture_pageview: false,
 			capture_pageleave: false,
-			capture_exceptions: true, // This enables capturing exceptions using Error Tracking, set to false if you don't want this
+			capture_exceptions: true,
 		});
 	}
 
 	depends('app:user');
 
 	try {
-		const user = await account.get<Appwrite.Preferences>();
+		const user = await account.get<FibriePrefs>();
 
 		posthog.identify(user.$id, {
 			email: user.email,

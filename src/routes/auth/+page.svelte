@@ -8,7 +8,7 @@
 
 	import { preferences } from '$preferences';
 
-	import LineTextSeparator from '$ui/components/separators/LineTextSeparator.svelte';
+	import LineTextSeparator from '$ui/components/separator/LineTextSeparator.svelte';
 	import AppleIcon from '$ui/icons/AppleIcon.svelte';
 	import GoogleIcon from '$ui/icons/GoogleIcon.svelte';
 
