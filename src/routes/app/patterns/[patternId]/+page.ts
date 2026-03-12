@@ -43,6 +43,6 @@ export const load: PageLoad = async ({ params, depends }) => {
 			},
 		};
 	} catch {
-		error(500, { message: 'Server error fetching pattern!' }); // TODO paraglide
+		error(500, { message: 'Server error while fetching pattern!' }); // TODO paraglide
 	}
 };

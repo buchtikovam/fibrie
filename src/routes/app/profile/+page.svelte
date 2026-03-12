@@ -32,7 +32,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<Header title={m.routes_profile_heading()}>
+<Header title="Profile">
 	<button class="btn btn-circle">
 		<Bell class="size-5" />
 	</button>

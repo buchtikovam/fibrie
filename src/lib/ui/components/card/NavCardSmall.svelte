@@ -11,7 +11,7 @@
 		children?: Snippet;
 	}
 
-	let { title, icon: IconComponent, separator = true, onclick, children }: Props = $props();
+	let { title, image, icon: IconComponent, separator = true, onclick, children }: Props = $props();
 </script>
 
 <button class="flex w-full flex-col" {onclick}>
