@@ -22,7 +22,9 @@
 		"prettier:check": "prettier --cache --cache-strategy content --check .",
 		"code:fix": "npm run prettier:fix && npm run eslint:fix && npm run svelte:check",
 		"code:check": "npm run prettier:check && npm run eslint:check && npm run svelte:check",
-		"prepare": "npm run svelte:sync"
+		"prepare": "npm run svelte:sync",
+		"appwrite:generate": "cd ../appwrite && npm run fibrie:appwrite:generate",
+		"appwrite:types": "cd ../appwrite && npm run fibrie:appwrite:types"
 	},
 	"engines": {
 		"npm": "10.9.4",
