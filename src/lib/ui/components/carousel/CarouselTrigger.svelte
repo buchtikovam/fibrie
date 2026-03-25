@@ -1,6 +1,6 @@
 <script lang="ts">
 	interface Props {
-		imageIds: string[];
+		imageIds: string[]|null;
 		currentImageIndex: number;
 		carouselRef: HTMLElement | null;
 	}
@@ -19,7 +19,7 @@
 
 {#if imageIds && imageIds.length > 1}
 	<div
-		class="relative z-10 mx-auto mb-10 flex items-center gap-2 rounded-full border border-base-100 bg-base-300/60 px-4 py-2"
+		class="relative z-10 mx-auto mb-10 flex items-center gap-2 rounded-full border-2 border-base-100 bg-base-300/60 px-4 py-2"
 	>
 		{#each imageIds as _, i (_)}
 			<button

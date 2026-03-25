@@ -27,5 +27,5 @@
 		</a>
 	</div>
 
-	<a href={resolve('/app/patterns/69a47aa60014b7c6813b')}>patterns</a>
+	<a href={resolve('/app/patterns/69c4375100054aacf8cd')}>patterns</a>
 </div>

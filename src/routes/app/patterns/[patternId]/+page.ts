@@ -1,48 +1,27 @@
 import { error } from '@sveltejs/kit';
 
-import { tablesDB } from '$appwrite/database';
-
-import type { Pattern } from '$lib/types/user';
-
-import { type Models, Query } from 'appwrite';
+import { tables } from '$appwrite/database';
 
 import type { PageLoad } from './$types';
 
-interface ReviewRating extends Models.Row {
-	$tableId: string;
-	rating: number;
-}
 
 export const load: PageLoad = async ({ params, depends }) => {
 	try {
 		depends('app:pattern');
 
-		const pattern: Pattern = await tablesDB.getRow<Pattern>({
-			databaseId: 'database',
-			tableId: 'patterns',
+		const pattern = await tables.patterns.getRow({
 			rowId: params.patternId,
-			queries: [Query.select(['*', 'profile.*', 'translations.*'])],
+			queries: (query) => [
+				query.select(['*', 'profile.*', "translations.*", "pattern_rating.*"]),
+			],
 		});
 
-		if (!pattern) {
-			error(404, 'Pattern not found'); // TODO paraglide
-		}
-
-		const ratingsPromise = tablesDB
-			.listRows<ReviewRating>({
-				databaseId: 'database',
-				tableId: 'reviews',
-				queries: [Query.equal('pattern', params.patternId), Query.select(['rating']), Query.limit(5000)],
-			})
-			.then((res) => res.rows);
+		if (!pattern) error(404);
 
 		return {
 			pattern,
-			lazy: {
-				ratings: ratingsPromise,
-			},
 		};
 	} catch {
-		error(500, { message: 'Server error while fetching pattern!' }); // TODO paraglide
+		error(500);
 	}
 };

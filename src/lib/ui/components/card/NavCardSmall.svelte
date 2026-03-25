@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { Component, Snippet } from 'svelte';
 
-	import { ChevronRight, type Icon } from '@lucide/svelte';
+	import { ChevronRight } from '@lucide/svelte';
 
 	interface Props {
 		title: string;
-		icon: typeof Icon;
+		icon: Component|string;
 		separator?: boolean;
 		onclick?: () => void;
 		children?: Snippet;
@@ -20,6 +20,7 @@
 			class="rounded-md bg-base-300 p-2 transition-colors group-hover:bg-primary group-hover:text-primary-content"
 		>
 			<IconComponent class="size-5" />
+
 		</span>
 
 		<span class="flex-1 text-start font-medium text-base-content">{title}</span>

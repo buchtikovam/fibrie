@@ -3,7 +3,7 @@
 
 	interface Props {
 		bucketId: string;
-		imageIds: string[];
+		imageIds: string[]|null;
 		carouselRef: HTMLElement | null;
 		currentImageIndex: number;
 	}
@@ -14,7 +14,7 @@
 
 	let deviceWidth = $state(0);
 	let optimizedUrls = $derived(
-		deviceWidth === 0
+		deviceWidth === 0 || imageIds === null
 			? []
 			: imageIds.map((id) => storage.getFilePreview({ bucketId, fileId: id, width: deviceWidth })),
 	);
@@ -53,4 +53,6 @@
 			{/if}
 		</div>
 	{/each}
+
+	<!-- TODO: placeholder if no img ids -->
 </div>

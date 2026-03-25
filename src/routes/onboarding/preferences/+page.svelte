@@ -11,8 +11,8 @@
 	import { PushNotifications } from '@capacitor/push-notifications';
 	import { cubicOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
+	import NavCardSmall from "$ui/components/card/NavCardSmall.svelte";
 
-	import SelectionCard from '../../app/profile/(todo)/cards/SelectionCard.svelte';
 
 	let currentStep = $state(0);
 	const TOTAL_STEPS = 6;
@@ -120,37 +120,37 @@
 						<p class="mt-2 text-base-content/60">{m.routes_onboarding_preferences_craft_description()}</p>
 					</header>
 
-					<div class="flex-1 space-y-3 overflow-y-auto pb-4">
-						<SelectionCard
-							name="craft"
-							type="radio"
-							value="knit"
-							icon="🥢"
-							label={m.routes_onboarding_preferences_craft_value_knit_title()}
-							description={m.routes_onboarding_preferences_craft_value_knit_description()}
-							bind:group={answers.craft}
-						/>
+<!--					<div class="flex-1 space-y-3 overflow-y-auto pb-4">-->
+<!--						<SelectionCard-->
+<!--							name="craft"-->
+<!--							type="radio"-->
+<!--							value="knit"-->
+<!--							icon="🥢"-->
+<!--							label={m.routes_onboarding_preferences_craft_value_knit_title()}-->
+<!--							description={m.routes_onboarding_preferences_craft_value_knit_description()}-->
+<!--							bind:group={answers.craft}-->
+<!--						/>-->
 
-						<SelectionCard
-							name="craft"
-							type="radio"
-							value="crochet"
-							icon="🪝"
-							label={m.routes_onboarding_preferences_craft_value_crochet_title()}
-							description={m.routes_onboarding_preferences_craft_value_crochet_description()}
-							bind:group={answers.craft}
-						/>
+<!--						<SelectionCard-->
+<!--							name="craft"-->
+<!--							type="radio"-->
+<!--							value="crochet"-->
+<!--							icon="🪝"-->
+<!--							label={m.routes_onboarding_preferences_craft_value_crochet_title()}-->
+<!--							description={m.routes_onboarding_preferences_craft_value_crochet_description()}-->
+<!--							bind:group={answers.craft}-->
+<!--						/>-->
 
-						<SelectionCard
-							name="craft"
-							type="radio"
-							value="both"
-							icon="💡"
-							label={m.routes_onboarding_preferences_craft_value_both_title()}
-							description={m.routes_onboarding_preferences_craft_value_both_description()}
-							bind:group={answers.craft}
-						/>
-					</div>
+<!--						<SelectionCard-->
+<!--							name="craft"-->
+<!--							type="radio"-->
+<!--							value="both"-->
+<!--							icon="💡"-->
+<!--							label={m.routes_onboarding_preferences_craft_value_both_title()}-->
+<!--							description={m.routes_onboarding_preferences_craft_value_both_description()}-->
+<!--							bind:group={answers.craft}-->
+<!--						/>-->
+<!--					</div>-->
 				{:else if currentStep === 1}
 					<header class="flex-none py-6">
 						<h2 class="font-serif text-2xl font-bold text-base-content">
@@ -158,70 +158,70 @@
 						</h2>
 						<p class="mt-2 text-base-content/60">{m.routes_onboarding_preferences_skills_description()}</p>
 					</header>
-					<div class="flex-1 space-y-3 overflow-y-auto pb-4">
-						<SelectionCard
-							name="skill"
-							type="radio"
-							icon="🐣"
-							value="beginner"
-							label={m.routes_onboarding_preferences_skills_value_beginner_title()}
-							description={m.routes_onboarding_preferences_skills_value_beginner_description()}
-							bind:group={answers.skill}
-						/>
-						<SelectionCard
-							name="skill"
-							type="radio"
-							value="intermediate"
-							icon="🧶"
-							label={m.routes_onboarding_preferences_skills_value_intermediate_title()}
-							description={m.routes_onboarding_preferences_skills_value_intermediate_description()}
-							bind:group={answers.skill}
-						/>
-						<SelectionCard
-							name="skill"
-							type="radio"
-							value="advanced"
-							icon="🎓"
-							label={m.routes_onboarding_preferences_skills_value_advanced_title()}
-							description={m.routes_onboarding_preferences_skills_value_advanced_description()}
-							bind:group={answers.skill}
-						/>
-						<SelectionCard
-							name="skill"
-							type="radio"
-							icon="🫅"
-							value="expert"
-							label={m.routes_onboarding_preferences_skills_value_expert_title()}
-							description={m.routes_onboarding_preferences_skills_value_expert_description()}
-							bind:group={answers.skill}
-						/>
-					</div>
+<!--					<div class="flex-1 space-y-3 overflow-y-auto pb-4">-->
+<!--						<NavCardSmall-->
+<!--							name="skill"-->
+<!--							type="radio"-->
+<!--							icon="🐣"-->
+<!--							value="beginner"-->
+<!--							label={m.routes_onboarding_preferences_skills_value_beginner_title()}-->
+<!--							description={m.routes_onboarding_preferences_skills_value_beginner_description()}-->
+<!--							bind:group={answers.skill}-->
+<!--						/>-->
+<!--						<SelectionCard-->
+<!--							name="skill"-->
+<!--							type="radio"-->
+<!--							value="intermediate"-->
+<!--							icon="🧶"-->
+<!--							label={m.routes_onboarding_preferences_skills_value_intermediate_title()}-->
+<!--							description={m.routes_onboarding_preferences_skills_value_intermediate_description()}-->
+<!--							bind:group={answers.skill}-->
+<!--						/>-->
+<!--						<SelectionCard-->
+<!--							name="skill"-->
+<!--							type="radio"-->
+<!--							value="advanced"-->
+<!--							icon="🎓"-->
+<!--							label={m.routes_onboarding_preferences_skills_value_advanced_title()}-->
+<!--							description={m.routes_onboarding_preferences_skills_value_advanced_description()}-->
+<!--							bind:group={answers.skill}-->
+<!--						/>-->
+<!--						<SelectionCard-->
+<!--							name="skill"-->
+<!--							type="radio"-->
+<!--							icon="🫅"-->
+<!--							value="expert"-->
+<!--							label={m.routes_onboarding_preferences_skills_value_expert_title()}-->
+<!--							description={m.routes_onboarding_preferences_skills_value_expert_description()}-->
+<!--							bind:group={answers.skill}-->
+<!--						/>-->
+<!--					</div>-->
 				{:else if currentStep === 2}
 					<header class="flex-none py-6">
 						<h2 class="font-serif text-2xl font-bold text-base-content">
 							{m.routes_onboarding_preferences_units_title()}
 						</h2>
 					</header>
-					<div class="flex-1 space-y-3 overflow-y-auto pb-4">
-						<SelectionCard
-							name="units"
-							type="radio"
-							value="metric"
-							icon="📏"
-							label="Metric"
-							description="Centimeters & Millimeters (cm/mm)"
-							bind:group={answers.units}
-						/>
-						<SelectionCard
-							name="units"
-							type="radio"
-							icon="👑"
-							value="imperial"
-							label="Imperial"
-							description="Inches & US Sizes (in)"
-							bind:group={answers.units}
-						/>
-					</div>
+<!--					<div class="flex-1 space-y-3 overflow-y-auto pb-4">-->
+<!--						<SelectionCard-->
+<!--							name="units"-->
+<!--							type="radio"-->
+<!--							value="metric"-->
+<!--							icon="📏"-->
+<!--							label="Metric"-->
+<!--							description="Centimeters & Millimeters (cm/mm)"-->
+<!--							bind:group={answers.units}-->
+<!--						/>-->
+<!--						<SelectionCard-->
+<!--							name="units"-->
+<!--							type="radio"-->
+<!--							icon="👑"-->
+<!--							value="imperial"-->
+<!--							label="Imperial"-->
+<!--							description="Inches & US Sizes (in)"-->
+<!--							bind:group={answers.units}-->
+<!--						/>-->
+<!--					</div>-->
 				{:else if currentStep === 3}
 					<header class="flex-none py-6">
 						<h2 class="font-serif text-2xl font-bold text-base-content">
@@ -231,26 +231,26 @@
 							{@html m.routes_onboarding_preferences_crochet_terms_description()}
 						</p>
 					</header>
-					<div class="flex-1 space-y-3 overflow-y-auto pb-4">
-						<SelectionCard
-							name="terms"
-							type="radio"
-							icon="👍"
-							value="US"
-							label={m.routes_onboarding_preferences_crochet_terms_value_us_title()}
-							description={m.routes_onboarding_preferences_crochet_terms_value_us_description()}
-							bind:group={answers.crochetTerms}
-						/>
-						<SelectionCard
-							name="terms"
-							type="radio"
-							value="UK"
-							icon="👎"
-							label={m.routes_onboarding_preferences_crochet_terms_value_uk_title()}
-							description={m.routes_onboarding_preferences_crochet_terms_value_uk_description()}
-							bind:group={answers.crochetTerms}
-						/>
-					</div>
+<!--					<div class="flex-1 space-y-3 overflow-y-auto pb-4">-->
+<!--						<SelectionCard-->
+<!--							name="terms"-->
+<!--							type="radio"-->
+<!--							icon="👍"-->
+<!--							value="US"-->
+<!--							label={m.routes_onboarding_preferences_crochet_terms_value_us_title()}-->
+<!--							description={m.routes_onboarding_preferences_crochet_terms_value_us_description()}-->
+<!--							bind:group={answers.crochetTerms}-->
+<!--						/>-->
+<!--						<SelectionCard-->
+<!--							name="terms"-->
+<!--							type="radio"-->
+<!--							value="UK"-->
+<!--							icon="👎"-->
+<!--							label={m.routes_onboarding_preferences_crochet_terms_value_uk_title()}-->
+<!--							description={m.routes_onboarding_preferences_crochet_terms_value_uk_description()}-->
+<!--							bind:group={answers.crochetTerms}-->
+<!--						/>-->
+<!--					</div>-->
 				{:else if currentStep === 4}
 					<header class="flex-none py-6">
 						<h2 class="font-serif text-2xl font-bold text-base-content">
@@ -260,52 +260,52 @@
 							{m.routes_onboarding_preferences_notifications_description()}
 						</p>
 					</header>
-					<div class="flex-1 space-y-3 overflow-y-auto pb-4">
-						<button onclick={requestNotification} class="w-full text-start">
-							<SelectionCard
-								name="reminders"
-								type="radio"
-								value="daily"
-								icon="⏰"
-								label={m.routes_onboarding_preferences_notifications_value_daily_title()}
-								description={m.routes_onboarding_preferences_notifications_value_daily_description()}
-								bind:group={answers.reminderFrequency}
-							/>
-						</button>
-						<button onclick={requestNotification} class="w-full text-start">
-							<SelectionCard
-								name="reminders"
-								type="radio"
-								value="weekly"
-								icon="🗓️"
-								label={m.routes_onboarding_preferences_notifications_value_weekly_title()}
-								description={m.routes_onboarding_preferences_notifications_value_weekly_description()}
-								bind:group={answers.reminderFrequency}
-							/>
-						</button>
+<!--					<div class="flex-1 space-y-3 overflow-y-auto pb-4">-->
+<!--						<button onclick={requestNotification} class="w-full text-start">-->
+<!--							<SelectionCard-->
+<!--								name="reminders"-->
+<!--								type="radio"-->
+<!--								value="daily"-->
+<!--								icon="⏰"-->
+<!--								label={m.routes_onboarding_preferences_notifications_value_daily_title()}-->
+<!--								description={m.routes_onboarding_preferences_notifications_value_daily_description()}-->
+<!--								bind:group={answers.reminderFrequency}-->
+<!--							/>-->
+<!--						</button>-->
+<!--						<button onclick={requestNotification} class="w-full text-start">-->
+<!--							<SelectionCard-->
+<!--								name="reminders"-->
+<!--								type="radio"-->
+<!--								value="weekly"-->
+<!--								icon="🗓️"-->
+<!--								label={m.routes_onboarding_preferences_notifications_value_weekly_title()}-->
+<!--								description={m.routes_onboarding_preferences_notifications_value_weekly_description()}-->
+<!--								bind:group={answers.reminderFrequency}-->
+<!--							/>-->
+<!--						</button>-->
 
-						<button class="w-full text-start">
-							<SelectionCard
-								name="reminders"
-								type="radio"
-								value="none"
-								icon="🔕"
-								label={m.routes_onboarding_preferences_notifications_value_none_title()}
-								description={m.routes_onboarding_preferences_notifications_value_none_description()}
-								bind:group={answers.reminderFrequency}
-							/>
-						</button>
-						{#if permission}
-							<p class="mt-6 font-bold text-base-content">
-								{m.routes_onboarding_preferences_notifications_time_input_title()}
-							</p>
-							<input
-								type="time"
-								class="input input-lg w-full border-primary"
-								bind:value={answers.reminderTime}
-							/>
-						{/if}
-					</div>
+<!--						<button class="w-full text-start">-->
+<!--							<SelectionCard-->
+<!--								name="reminders"-->
+<!--								type="radio"-->
+<!--								value="none"-->
+<!--								icon="🔕"-->
+<!--								label={m.routes_onboarding_preferences_notifications_value_none_title()}-->
+<!--								description={m.routes_onboarding_preferences_notifications_value_none_description()}-->
+<!--								bind:group={answers.reminderFrequency}-->
+<!--							/>-->
+<!--						</button>-->
+<!--						{#if permission}-->
+<!--							<p class="mt-6 font-bold text-base-content">-->
+<!--								{m.routes_onboarding_preferences_notifications_time_input_title()}-->
+<!--							</p>-->
+<!--							<input-->
+<!--								type="time"-->
+<!--								class="input input-lg w-full border-primary"-->
+<!--								bind:value={answers.reminderTime}-->
+<!--							/>-->
+<!--						{/if}-->
+<!--					</div>-->
 				{:else if currentStep === 5}
 					<header class="flex-none py-6">
 						<h2 class="text-2xl font-bold text-base-content">
@@ -335,10 +335,11 @@
 	</div>
 
 	<div class="mx-auto w-full max-w-lg flex-none p-6">
+
+<!--		disabled={!isStepValid}-->
 		<button
 			class="btn w-full rounded-full transition-all btn-lg btn-primary"
 			onclick={handleNext}
-			disabled={!isStepValid}
 		>
 			{currentStep === TOTAL_STEPS - 1
 				? m.routes_onboarding_preferences_button_submit()
